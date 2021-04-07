@@ -2,9 +2,10 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: 'masaru514',
+    title: 'masaru514 Blog',
     siteUrl: 'https://masaru514.gatsbyjs.io',
-    description: 'mysite',
+    description:
+      'masaru514のブログです。主にフロントエンドを中心に情報を載せています。利用する技術：JavaScript, Nuxt, Next, Gatsby, Node, Firebaseなどなど。',
   },
   plugins: [
     {

@@ -23,6 +23,7 @@ module.exports = {
         printWidth: 120,
       },
     ],
+    'react/prop-types': ['off'],
     indent: ['error', 2],
     quotes: ['error', 'single'],
   },
