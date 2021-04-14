@@ -28,6 +28,7 @@ const Articles = () => {
     margin-bottom: 2rem;
     border-radius: 5px;
     padding: 2rem;
+    font-family: 'Inter,Noto Sans JP';
   `
 
   return articles.map((article) => {

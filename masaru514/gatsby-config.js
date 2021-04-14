@@ -90,5 +90,22 @@ module.exports = {
         plugins: [],
       },
     },
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: ['Noto Sans JP', 'Inter', 'JetBrains Mono'],
+        display: 'swap',
+      },
+    },
+    {
+      resolve: 'gatsby-remark-prismjs',
+      options: {
+        classPrefix: 'language-',
+        inlineCodeMarker: null,
+        aliases: {},
+        showLineNumbers: true,
+        noInlineHighlight: false,
+      },
+    },
   ],
 }
