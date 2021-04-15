@@ -1,6 +1,5 @@
 import * as React from 'react'
 import Layout from '../layout/default'
-import Head from '../components/Head'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import { format } from 'date-fns'
@@ -8,13 +7,35 @@ import { utcToZonedTime } from 'date-fns-tz'
 
 // markup
 const IndexPage = () => {
+  const H1Title = styled.h1`
+    font-family: 'Noto Sans JP';
+    font-size: 24px;
+    color: #333;
+    width: 1000px;
+    margin: 0 auto;
+    padding-left: 1rem;
+  `
+
+  const TheHeader = styled.header`
+    background: #fff;
+    padding: 1rem 0;
+  `
+
+  const TheMain = styled.main`
+    width: 1000px;
+    margin: 2rem auto;
+    padding: 3rem;
+    background: #fff;
+  `
+
   return (
     <Layout>
-      <Head title="HOME" />
-      <main>
-        <h1>masaru514 技術書</h1>
+      <TheHeader>
+        <H1Title className="text-center">masaru514 技術書</H1Title>
+      </TheHeader>
+      <TheMain>
         <Articles />
-      </main>
+      </TheMain>
     </Layout>
   )
 }
@@ -24,11 +45,35 @@ const Articles = () => {
   const articles = allContentfulMasaru514Blog.nodes
 
   const Section = styled.section`
-    border: 1px solid #f8f8f8;
+    border: 1px solid #f0f0f0;
     margin-bottom: 2rem;
     border-radius: 5px;
-    padding: 2rem;
-    font-family: 'Inter,Noto Sans JP';
+    padding: 2rem 3rem 3rem 3rem;
+    font-family: 'Noto Sans JP';
+    max-width: 800px;
+    color: #333;
+  `
+
+  const Flex = styled.div`
+    display: flex;
+    > p {
+      color: #aaa;
+      font-size: 0.8rem;
+    }
+    > p:first-child {
+      margin-right: 1rem;
+    }
+  `
+
+  const SectionTitle = styled.h2`
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 1.5rem;
+  `
+
+  const Body = styled.div`
+    margin-top: 2rem;
+    line-height: 2;
   `
 
   return articles.map((article) => {
@@ -39,10 +84,12 @@ const Articles = () => {
     const updatedAt = format(jstUpdatedAt, 'yyyy/MM/dd HH:mm')
     return (
       <Section key={article.title}>
-        <p>作成日：{createdAt}</p>
-        {createdAt !== updatedAt ? <p>更新日：{updatedAt}</p> : ''}
-        <h2>{article.title}</h2>
-        <div dangerouslySetInnerHTML={{ __html: article.body.childrenMarkdownRemark[0].html }} />
+        <Flex>
+          <p className="text-center">作成日 {createdAt}</p>
+          {createdAt !== updatedAt ? <p>更新日 {updatedAt}</p> : ''}
+        </Flex>
+        <SectionTitle>{article.title}</SectionTitle>
+        <Body dangerouslySetInnerHTML={{ __html: article.body.childrenMarkdownRemark[0].html }} />
       </Section>
     )
   })

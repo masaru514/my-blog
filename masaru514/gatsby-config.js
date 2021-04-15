@@ -87,7 +87,7 @@ module.exports = {
         // GitHub Flavored Markdown mode (default: true)
         gfm: true,
         // Plugins configs
-        plugins: [],
+        plugins: ['gatsby-remark-prismjs'],
       },
     },
     {
@@ -95,16 +95,6 @@ module.exports = {
       options: {
         fonts: ['Noto Sans JP', 'Inter', 'JetBrains Mono'],
         display: 'swap',
-      },
-    },
-    {
-      resolve: 'gatsby-remark-prismjs',
-      options: {
-        classPrefix: 'language-',
-        inlineCodeMarker: null,
-        aliases: {},
-        showLineNumbers: true,
-        noInlineHighlight: false,
       },
     },
   ],
