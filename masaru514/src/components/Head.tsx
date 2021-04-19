@@ -2,12 +2,22 @@ import React from 'React'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-const Head = ({ title, description }) => {
-  const { site } = useStaticQuery(query)
+interface SiteData {
+  site: {
+    id: string
+    siteMetadata: {
+      defaultTitle: string
+      defaultDescription: string
+    }
+  }
+}
+
+const Head = ({ title, description }: { title: string; description: string }): JSX.Element => {
+  const { site }: SiteData = useStaticQuery(query)
   const { defaultTitle, defaultDescription } = site.siteMetadata
   const metaData = {
-    title: `${title} | ${defaultTitle}`,
-    description: description | defaultDescription,
+    title: title || defaultTitle,
+    description: description || defaultDescription,
   }
   return (
     <Helmet>

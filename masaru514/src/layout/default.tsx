@@ -4,7 +4,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
 import 'prismjs/themes/prism-tomorrow.css'
 
-const Layout = ({ children }) => {
+const Layout: React.FC = ({ children }) => {
   const Body = styled.div`
     background: #f8f8f8;
   `

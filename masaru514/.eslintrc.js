@@ -5,15 +5,22 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+  ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 12,
     sourceType: 'module',
+    tsconfigRootDir: __dirname,
+    project: ['./tsconfig.eslint.json'],
   },
-  plugins: ['react', 'prettier'],
+  plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
     'prettier/prettier': [
       'error',
@@ -24,6 +31,12 @@ module.exports = {
       },
     ],
     'react/prop-types': ['off'],
+    'react/jsx-filename-extension': [
+      1,
+      {
+        extensions: ['js', 'jsx', 'tsx'],
+      },
+    ],
     indent: ['error', 2],
     quotes: ['error', 'single'],
   },

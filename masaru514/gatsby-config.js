@@ -15,7 +15,18 @@ module.exports = {
         spaceId: process.env.SPACEID,
       },
     },
-    'gatsby-plugin-eslint',
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        test: /\.js$|\.jsx$|\.ts$|\.tsx$/,
+        exclude: /(node_modules|.cache|public)/,
+        stages: ['develop'],
+        options: {
+          emitWarning: true,
+          failOnError: false,
+        },
+      },
+    },
     'gatsby-plugin-sass',
     'gatsby-plugin-gatsby-cloud',
     'gatsby-plugin-image',
@@ -97,5 +108,14 @@ module.exports = {
         display: 'swap',
       },
     },
+    {
+      resolve: 'gatsby-plugin-typescript',
+      options: {
+        isTSX: true, // defaults to false
+        jsxPragma: 'jsx', // defaults to "React"
+        allExtensions: true, // defaults to false
+      },
+    },
+    'gatsby-plugin-typegen',
   ],
 }

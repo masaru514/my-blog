@@ -5,8 +5,28 @@ import styled from 'styled-components'
 import { format } from 'date-fns'
 import { utcToZonedTime } from 'date-fns-tz'
 
+interface ContentfulQuery {
+  allContentfulMasaru514Blog: {
+    nodes: [
+      {
+        id: string
+        slug: string
+        tags: string | null
+        title: string
+        updatedAt: string
+        createdAt: string
+        body: {
+          childMarkdownRemark: {
+            html: string
+          }
+        }
+      },
+    ]
+  }
+}
+
 // markup
-const IndexPage = () => {
+const IndexPage: React.FC = () => {
   const H1Title = styled.h1`
     font-family: 'Noto Sans JP';
     font-size: 24px;
@@ -41,9 +61,8 @@ const IndexPage = () => {
 }
 
 const Articles = () => {
-  const { allContentfulMasaru514Blog } = useStaticQuery(query)
+  const { allContentfulMasaru514Blog }: ContentfulQuery = useStaticQuery(query)
   const articles = allContentfulMasaru514Blog.nodes
-
   const Section = styled.section`
     border: 1px solid #f0f0f0;
     margin-bottom: 2rem;
@@ -89,7 +108,7 @@ const Articles = () => {
           {createdAt !== updatedAt ? <p>更新日 {updatedAt}</p> : ''}
         </Flex>
         <SectionTitle>{article.title}</SectionTitle>
-        <Body dangerouslySetInnerHTML={{ __html: article.body.childrenMarkdownRemark[0].html }} />
+        <Body dangerouslySetInnerHTML={{ __html: article.body.childMarkdownRemark.html }} />
       </Section>
     )
   })
@@ -107,7 +126,7 @@ const query = graphql`
         updatedAt
         createdAt
         body {
-          childrenMarkdownRemark {
+          childMarkdownRemark {
             html
           }
           id
