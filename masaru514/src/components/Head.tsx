@@ -12,7 +12,12 @@ interface SiteData {
   }
 }
 
-const Head = ({ title, description }: { title: string; description: string }): JSX.Element => {
+type MetaTagGroup = {
+  title?: string
+  description?: string
+}
+
+const Head = ({ title, description }: MetaTagGroup): JSX.Element => {
   const { site }: SiteData = useStaticQuery(query)
   const { defaultTitle, defaultDescription } = site.siteMetadata
   const metaData = {
