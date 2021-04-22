@@ -44,9 +44,16 @@ const query = graphql`
   }
 `
 
-const Articles: React.FC = () => {
+type Props = {
+  perPageDisplay: number
+}
+
+const Articles: React.FC<Props> = (props) => {
   const { allContentfulMasaru514Blog }: ContentfulQuery = useStaticQuery(query)
   const articles = allContentfulMasaru514Blog.nodes
+
+  console.log(articles)
+  // const perPageArticles = articles.slice(currentPage, props.perPageDisplay)
 
   const Section = styled.section`
     border: 1px solid #f0f0f0;

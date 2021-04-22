@@ -14,11 +14,12 @@ module.exports = {
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
+      impliedStrict: true,
     },
     ecmaVersion: 12,
     sourceType: 'module',
     tsconfigRootDir: __dirname,
-    project: ['./tsconfig.eslint.json'],
+    project: './tsconfig.eslint.json',
   },
   plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {

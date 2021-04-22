@@ -1,5 +1,6 @@
 {
-  "include": ["./src/**/*"],
+  "include": ["src/**/*"],
+  "exclude": [".eslintrc.js", "gatsby-node.js"],
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",

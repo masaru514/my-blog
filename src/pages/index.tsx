@@ -31,7 +31,7 @@ const IndexPage: React.FC = () => {
         <H1Title className="text-center">masaru514 技術書</H1Title>
       </TheHeader>
       <TheMain>
-        <Articles />
+        <Articles perPageDisplay={5} />
       </TheMain>
     </Layout>
   )
