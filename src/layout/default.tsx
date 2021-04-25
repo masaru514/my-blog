@@ -5,11 +5,20 @@ import reset from 'styled-reset'
 import 'prismjs/themes/prism-tomorrow.css'
 
 const Layout: React.FC = ({ children }) => {
-  const Body = styled.div`
+  return (
+    <Body>
+      <GlobalStyle />
+      <Head title="HOME" />
+      {children}
+    </Body>
+  )
+}
+
+const Body = styled.div`
     background: #f8f8f8;
   `
 
-  const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
     ${reset}
     h2 {
       font-weight: bold;
@@ -20,13 +29,5 @@ const Layout: React.FC = ({ children }) => {
       width: 100%;
     }
   `
-  return (
-    <Body>
-      <GlobalStyle />
-      <Head title="HOME" />
-      {children}
-    </Body>
-  )
-}
 
 export default Layout
