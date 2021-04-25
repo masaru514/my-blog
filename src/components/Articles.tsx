@@ -48,11 +48,9 @@ type Props = {
   perPageDisplay: number
 }
 
-const Articles: React.FC<Props> = (props) => {
+const Articles: React.FC<Props> = () => {
   const { allContentfulMasaru514Blog }: ContentfulQuery = useStaticQuery(query)
   const articles = allContentfulMasaru514Blog.nodes
-
-  console.log(props)
   // const perPageArticles = articles.slice(currentPage, props.perPageDisplay)
 
   const Section = styled.section`

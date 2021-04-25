@@ -1,15 +1,26 @@
-import { paginate } from 'gatsby-awesome-pagination'
-import path from 'path'
+const { paginate } = require('gatsby-awesome-pagination')
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
+  const template = path.resolve(`src/templates/index.js`);
 
-exports.createPages = ({ actions, graphql }) => {
-  console.log('test', graphql)
-  const { createPage } = actions
-  const blogPosts = doSomeMagic()
+  const result = await graphql(
+    `
+      {
+        posts: allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
+          ・・・
+      }
+    `
+  );
+  if (result.errors) {
+    throw result.errors;
+  }
+ 
+  const posts = result.data.posts.edges;
+
   paginate({
     createPage,
-    items: blogPosts,
-    itemsPerPage: 10,
-    pathPrefix: '/blog',
-    component: path.resolvec('/'),
-  })
-}
+    items: posts,
+    itemsPerPage: 5,
+    component: template,
+    pathPrefix: ({ pageNumber }) => (pageNumber === 0 ? "/" : "/page"),
+  });

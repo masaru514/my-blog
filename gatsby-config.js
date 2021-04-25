@@ -1,6 +1,4 @@
-import dotenv from 'dotenv'
-
-dotenv.config()
+require('dotenv').config() // eslint-disable-line @typescript-eslint/no-var-requires
 
 module.exports = {
   siteMetadata: {
