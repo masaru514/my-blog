@@ -1,44 +1,37 @@
-// eslint-disable-next-line no-undef
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-  },
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
-  ],
+  root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-      impliedStrict: true,
-    },
-    ecmaVersion: 12,
+    ecmaVersion: 2021,
     sourceType: 'module',
-    tsconfigRootDir: __dirname,
-    project: './tsconfig.eslint.json',
+    ecmaFeatures: { jsx: true },
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  settings: { react: { version: 'detect' } },
+  env: { es2021: true, browser: true, jest: true, node: true },
+  plugins: ['import', 'react-hooks'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:prettier/recommended',
+  ],
   rules: {
-    'prettier/prettier': [
-      'error',
-      {
-        singleQuote: true,
-        semi: false,
-        printWidth: 120,
-      },
-    ],
-    'react/prop-types': ['off'],
-    'react/jsx-filename-extension': [
-      1,
-      {
-        extensions: ['js', 'jsx', 'tsx'],
-      },
-    ],
-    indent: ['error', 2],
-    quotes: ['error', 'single'],
+    semi: ['error', 'never'],
+    'no-console': ['error', { allow: ['warn', 'info', 'error'] }],
+    'no-restricted-syntax': ['error', { selector: 'TSEnumDeclaration', message: "Don't declare enums" }],
+    'react/prop-types': 'off',
+    'prefer-arrow-callback': 'error',
+    'func-style': ['error', 'expression'],
+    'react/react-in-jsx-scope': 0,
+    'react/display-name': 'error',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'import/newline-after-import': 'error',
+    '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/explicit-module-boundary-types': 0,
+    '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports' }],
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'prettier/prettier': ['error', { semi: false, singleQuote: true, trailingComma: 'es5' }, { usePrettierrc: true }],
   },
 }

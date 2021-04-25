@@ -19,7 +19,7 @@ interface ContentfulQuery {
             html: string
           }
         }
-      },
+      }
     ]
   }
 }
@@ -52,7 +52,7 @@ const Articles: React.FC<Props> = (props) => {
   const { allContentfulMasaru514Blog }: ContentfulQuery = useStaticQuery(query)
   const articles = allContentfulMasaru514Blog.nodes
 
-  console.log(articles)
+  console.log(props)
   // const perPageArticles = articles.slice(currentPage, props.perPageDisplay)
 
   const Section = styled.section`
