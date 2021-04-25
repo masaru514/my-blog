@@ -17,6 +17,7 @@ const Layout: React.FC = ({ children }) => {
     }
     img {
       max-width: 600px;
+      width: 100%;
     }
   `
   return (

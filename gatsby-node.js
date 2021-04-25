@@ -1,26 +1,47 @@
-const { paginate } = require('gatsby-awesome-pagination')
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
-  const template = path.resolve(`src/templates/index.js`);
+const { paginate } = require('gatsby-awesome-pagination') // eslint-disable-line @typescript-eslint/no-var-requires
+const path = require('path') // eslint-disable-line @typescript-eslint/no-var-requires
 
-  const result = await graphql(
-    `
-      {
-        posts: allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
-          ・・・
-      }
-    `
-  );
-  if (result.errors) {
-    throw result.errors;
-  }
- 
-  const posts = result.data.posts.edges;
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage } = actions
 
-  paginate({
-    createPage,
-    items: posts,
-    itemsPerPage: 5,
-    component: template,
-    pathPrefix: ({ pageNumber }) => (pageNumber === 0 ? "/" : "/page"),
-  });
+  return new Promise((resolve, reject) => {
+    resolve(
+      graphql(`
+        {
+          allContentfulMasaru514Blog {
+            nodes {
+              id
+              tags
+              title
+              updatedAt
+              createdAt
+              slug
+              body {
+                id
+                childMarkdownRemark {
+                  html
+                }
+              }
+            }
+          }
+        }
+      `).then((result) => {
+        if (result.errors) {
+          console.error(result.errors)
+          reject(result.errors)
+        }
+        const blog = path.resolve('./src/templates/index.tsx')
+        const { data } = result
+        const array = data.allContentfulMasaru514Blog
+        paginate({
+          createPage,
+          items: array.nodes,
+          component: blog,
+          itemsPerPage: 4,
+          itemsPerFirstPage: 5,
+          pathPrefix: '/',
+        })
+      }),
+    )
+  })
+}

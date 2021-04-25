@@ -14,7 +14,7 @@ module.exports = {
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
-    'plugin:prettier/recommended',
+    // 'plugin:prettier/recommended',
   ],
   rules: {
     semi: ['error', 'never'],
@@ -32,6 +32,6 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 0,
     '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports' }],
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-    'prettier/prettier': ['error', { semi: false, singleQuote: true, trailingComma: 'es5' }, { usePrettierrc: true }],
+    // 'prettier/prettier': ['error', { semi: false, singleQuote: true, trailingComma: 'es5' }, { usePrettierrc: true }],
   },
 }
