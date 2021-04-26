@@ -2,6 +2,7 @@ import * as React from 'react'
 import Layout from '../layout/default'
 import styled from 'styled-components'
 import Articles from '../components/Articles'
+import Pagination from '../components/Pagination'
 import { graphql } from 'gatsby'
 import { device } from '../assets/styles.js'
 
@@ -50,8 +51,11 @@ interface BlogQuery {
   }
 }
 
+type ChildPagination = React.ComponentProps<typeof Pagination>
+
 // markup
-const IndexPage = (props: BlogQuery) => {
+const IndexPage = (props: BlogQuery & ChildPagination) => {
+  const { pageContext } = props
   const articles = props.data.posts.nodes
   return (
     <Layout>
@@ -60,6 +64,7 @@ const IndexPage = (props: BlogQuery) => {
       </TheHeader>
       <TheMain>
         <Articles articles={articles} />
+        <Pagination pageContext={pageContext} />
       </TheMain>
     </Layout>
   )

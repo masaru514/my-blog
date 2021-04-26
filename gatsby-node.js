@@ -33,13 +33,14 @@ exports.createPages = ({ actions, graphql }) => {
         const blog = path.resolve('./src/templates/index.tsx')
         const { data } = result
         const array = data.allContentfulMasaru514Blog
+        const pathPrefix = ({ pageNumber }) => (pageNumber === 0 ? '/blog' : '/blog/page')
         paginate({
           createPage,
           items: array.nodes,
           component: blog,
           itemsPerPage: 4,
           itemsPerFirstPage: 5,
-          pathPrefix: '/',
+          pathPrefix,
         })
       }),
     )
