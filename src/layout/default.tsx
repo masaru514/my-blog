@@ -21,7 +21,7 @@ const Body = styled.div`
 const GlobalStyle = createGlobalStyle`
     ${reset}
     h2 {
-      font-weight: bold;
+      font-weight: 800;
       font-size: 1.4rem;
     }
     img {

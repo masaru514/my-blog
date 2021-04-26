@@ -26,6 +26,7 @@ const Pagination = ({ pageContext }: PageContext) => {
 const PaginationDiv = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2.5rem;
 `
 
 export default Pagination

@@ -59,6 +59,9 @@ const Section = styled.section`
     background: #fff;
   @media screen and ${device.mobile} {
     padding: 1rem;
+    &:last-child {
+      margin-bottom: 2.5rem;
+    }
   }
   `
 

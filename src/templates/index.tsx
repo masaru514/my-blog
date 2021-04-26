@@ -3,7 +3,7 @@ import Layout from '../layout/default'
 import styled from 'styled-components'
 import Articles from '../components/Articles'
 import Pagination from '../components/Pagination'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { device } from '../assets/styles.js'
 
 export const pageQuery = graphql`
@@ -60,7 +60,7 @@ const IndexPage = (props: BlogQuery & ChildPagination) => {
   return (
     <Layout>
       <TheHeader>
-        <H1Title className="text-center">masaru514 技術書</H1Title>
+        <H1Title className="text-center"><Link to="/blog">技術書 by masaru514</Link></H1Title>
       </TheHeader>
       <TheMain>
         <Articles articles={articles} />
@@ -71,11 +71,16 @@ const IndexPage = (props: BlogQuery & ChildPagination) => {
 }
 
 const H1Title = styled.h1`
-    font-family: 'Noto Sans JP';
+    font-family: 'Inter, Noto sans JP';
     font-size: 24px;
     color: #333;
     margin: 0 auto;
     padding-left: 1rem;
+    max-width: 800px; 
+    > a {
+      color: #333;
+      text-decoration: none;
+    }
   `
 
 const TheHeader = styled.header`
@@ -89,6 +94,7 @@ const TheMain = styled.main`
     padding: 3rem;
 
     @media ${device.mobile} {
+      margin: 1rem auto 0;
       padding: 1rem;
     }
   `

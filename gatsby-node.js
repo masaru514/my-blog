@@ -1,4 +1,4 @@
-const { paginate } = require('gatsby-awesome-pagination') // eslint-disable-line @typescript-eslint/no-var-requires
+const { paginate, createPagePerItem } = require('gatsby-awesome-pagination') // eslint-disable-line @typescript-eslint/no-var-requires
 const path = require('path') // eslint-disable-line @typescript-eslint/no-var-requires
 
 exports.createPages = ({ actions, graphql }) => {
@@ -31,6 +31,7 @@ exports.createPages = ({ actions, graphql }) => {
           reject(result.errors)
         }
         const blog = path.resolve('./src/templates/index.tsx')
+        const article = path.resolve('./src/templates/article.tsx')
         const { data } = result
         const array = data.allContentfulMasaru514Blog
         const pathPrefix = ({ pageNumber }) => (pageNumber === 0 ? '/blog' : '/blog/page')
@@ -41,6 +42,14 @@ exports.createPages = ({ actions, graphql }) => {
           itemsPerPage: 4,
           itemsPerFirstPage: 5,
           pathPrefix,
+        })
+
+        createPagePerItem({
+          createPage,
+          items: array.nodes,
+          component: article,
+          itemToPath: 'id',
+          itemToId: 'nodes.id',
         })
       }),
     )

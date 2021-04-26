@@ -306,6 +306,48 @@ type SitePageContext = {
   readonly numberOfPages: Maybe<Scalars['Int']>;
   readonly previousPagePath: Maybe<Scalars['String']>;
   readonly nextPagePath: Maybe<Scalars['String']>;
+  readonly previousItem: Maybe<SitePageContextPreviousItem>;
+  readonly previousPageId: Maybe<Scalars['String']>;
+  readonly nextItem: Maybe<SitePageContextNextItem>;
+  readonly nextPageId: Maybe<Scalars['String']>;
+};
+
+type SitePageContextPreviousItem = {
+  readonly id: Maybe<Scalars['String']>;
+  readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly title: Maybe<Scalars['String']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly slug: Maybe<Scalars['String']>;
+  readonly body: Maybe<SitePageContextPreviousItemBody>;
+};
+
+type SitePageContextPreviousItemBody = {
+  readonly id: Maybe<Scalars['String']>;
+  readonly childMarkdownRemark: Maybe<SitePageContextPreviousItemBodyChildMarkdownRemark>;
+};
+
+type SitePageContextPreviousItemBodyChildMarkdownRemark = {
+  readonly html: Maybe<Scalars['String']>;
+};
+
+type SitePageContextNextItem = {
+  readonly id: Maybe<Scalars['String']>;
+  readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly title: Maybe<Scalars['String']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly slug: Maybe<Scalars['String']>;
+  readonly body: Maybe<SitePageContextNextItemBody>;
+};
+
+type SitePageContextNextItemBody = {
+  readonly id: Maybe<Scalars['String']>;
+  readonly childMarkdownRemark: Maybe<SitePageContextNextItemBodyChildMarkdownRemark>;
+};
+
+type SitePageContextNextItemBodyChildMarkdownRemark = {
+  readonly html: Maybe<Scalars['String']>;
 };
 
 type ImageFormat =
@@ -1092,6 +1134,8 @@ type SitePluginPluginOptionsPlugins = {
 type SitePluginPluginOptionsOptions = {
   readonly emitWarning: Maybe<Scalars['Boolean']>;
   readonly failOnError: Maybe<Scalars['Boolean']>;
+  readonly extensions: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly exclude: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
 };
 
 type SitePluginPluginOptionsPrettier = {
@@ -2415,6 +2459,48 @@ type SitePageContextFilterInput = {
   readonly numberOfPages: Maybe<IntQueryOperatorInput>;
   readonly previousPagePath: Maybe<StringQueryOperatorInput>;
   readonly nextPagePath: Maybe<StringQueryOperatorInput>;
+  readonly previousItem: Maybe<SitePageContextPreviousItemFilterInput>;
+  readonly previousPageId: Maybe<StringQueryOperatorInput>;
+  readonly nextItem: Maybe<SitePageContextNextItemFilterInput>;
+  readonly nextPageId: Maybe<StringQueryOperatorInput>;
+};
+
+type SitePageContextPreviousItemFilterInput = {
+  readonly id: Maybe<StringQueryOperatorInput>;
+  readonly tags: Maybe<StringQueryOperatorInput>;
+  readonly title: Maybe<StringQueryOperatorInput>;
+  readonly updatedAt: Maybe<DateQueryOperatorInput>;
+  readonly createdAt: Maybe<DateQueryOperatorInput>;
+  readonly slug: Maybe<StringQueryOperatorInput>;
+  readonly body: Maybe<SitePageContextPreviousItemBodyFilterInput>;
+};
+
+type SitePageContextPreviousItemBodyFilterInput = {
+  readonly id: Maybe<StringQueryOperatorInput>;
+  readonly childMarkdownRemark: Maybe<SitePageContextPreviousItemBodyChildMarkdownRemarkFilterInput>;
+};
+
+type SitePageContextPreviousItemBodyChildMarkdownRemarkFilterInput = {
+  readonly html: Maybe<StringQueryOperatorInput>;
+};
+
+type SitePageContextNextItemFilterInput = {
+  readonly id: Maybe<StringQueryOperatorInput>;
+  readonly tags: Maybe<StringQueryOperatorInput>;
+  readonly title: Maybe<StringQueryOperatorInput>;
+  readonly updatedAt: Maybe<DateQueryOperatorInput>;
+  readonly createdAt: Maybe<DateQueryOperatorInput>;
+  readonly slug: Maybe<StringQueryOperatorInput>;
+  readonly body: Maybe<SitePageContextNextItemBodyFilterInput>;
+};
+
+type SitePageContextNextItemBodyFilterInput = {
+  readonly id: Maybe<StringQueryOperatorInput>;
+  readonly childMarkdownRemark: Maybe<SitePageContextNextItemBodyChildMarkdownRemarkFilterInput>;
+};
+
+type SitePageContextNextItemBodyChildMarkdownRemarkFilterInput = {
+  readonly html: Maybe<StringQueryOperatorInput>;
 };
 
 type SitePluginFilterInput = {
@@ -2499,6 +2585,8 @@ type SitePluginPluginOptionsPluginsFilterInput = {
 type SitePluginPluginOptionsOptionsFilterInput = {
   readonly emitWarning: Maybe<BooleanQueryOperatorInput>;
   readonly failOnError: Maybe<BooleanQueryOperatorInput>;
+  readonly extensions: Maybe<StringQueryOperatorInput>;
+  readonly exclude: Maybe<StringQueryOperatorInput>;
 };
 
 type SitePluginPluginOptionsPrettierFilterInput = {
@@ -2681,6 +2769,22 @@ type SitePageFieldsEnum =
   | 'context.numberOfPages'
   | 'context.previousPagePath'
   | 'context.nextPagePath'
+  | 'context.previousItem.id'
+  | 'context.previousItem.tags'
+  | 'context.previousItem.title'
+  | 'context.previousItem.updatedAt'
+  | 'context.previousItem.createdAt'
+  | 'context.previousItem.slug'
+  | 'context.previousItem.body.id'
+  | 'context.previousPageId'
+  | 'context.nextItem.id'
+  | 'context.nextItem.tags'
+  | 'context.nextItem.title'
+  | 'context.nextItem.updatedAt'
+  | 'context.nextItem.createdAt'
+  | 'context.nextItem.slug'
+  | 'context.nextItem.body.id'
+  | 'context.nextPageId'
   | 'pluginCreator.id'
   | 'pluginCreator.parent.id'
   | 'pluginCreator.parent.parent.id'
@@ -2740,6 +2844,8 @@ type SitePageFieldsEnum =
   | 'pluginCreator.pluginOptions.stages'
   | 'pluginCreator.pluginOptions.options.emitWarning'
   | 'pluginCreator.pluginOptions.options.failOnError'
+  | 'pluginCreator.pluginOptions.options.extensions'
+  | 'pluginCreator.pluginOptions.options.exclude'
   | 'pluginCreator.pluginOptions.trackingId'
   | 'pluginCreator.pluginOptions.head'
   | 'pluginCreator.pluginOptions.anonymize'
@@ -5231,6 +5337,8 @@ type SitePluginFieldsEnum =
   | 'pluginOptions.stages'
   | 'pluginOptions.options.emitWarning'
   | 'pluginOptions.options.failOnError'
+  | 'pluginOptions.options.extensions'
+  | 'pluginOptions.options.exclude'
   | 'pluginOptions.trackingId'
   | 'pluginOptions.head'
   | 'pluginOptions.anonymize'
