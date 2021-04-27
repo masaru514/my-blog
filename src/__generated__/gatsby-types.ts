@@ -306,6 +306,7 @@ type SitePageContext = {
   readonly numberOfPages: Maybe<Scalars['Int']>;
   readonly previousPagePath: Maybe<Scalars['String']>;
   readonly nextPagePath: Maybe<Scalars['String']>;
+  readonly pageId: Maybe<Scalars['String']>;
   readonly previousItem: Maybe<SitePageContextPreviousItem>;
   readonly previousPageId: Maybe<Scalars['String']>;
   readonly nextItem: Maybe<SitePageContextNextItem>;
@@ -1134,8 +1135,6 @@ type SitePluginPluginOptionsPlugins = {
 type SitePluginPluginOptionsOptions = {
   readonly emitWarning: Maybe<Scalars['Boolean']>;
   readonly failOnError: Maybe<Scalars['Boolean']>;
-  readonly extensions: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly exclude: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
 };
 
 type SitePluginPluginOptionsPrettier = {
@@ -2459,6 +2458,7 @@ type SitePageContextFilterInput = {
   readonly numberOfPages: Maybe<IntQueryOperatorInput>;
   readonly previousPagePath: Maybe<StringQueryOperatorInput>;
   readonly nextPagePath: Maybe<StringQueryOperatorInput>;
+  readonly pageId: Maybe<StringQueryOperatorInput>;
   readonly previousItem: Maybe<SitePageContextPreviousItemFilterInput>;
   readonly previousPageId: Maybe<StringQueryOperatorInput>;
   readonly nextItem: Maybe<SitePageContextNextItemFilterInput>;
@@ -2585,8 +2585,6 @@ type SitePluginPluginOptionsPluginsFilterInput = {
 type SitePluginPluginOptionsOptionsFilterInput = {
   readonly emitWarning: Maybe<BooleanQueryOperatorInput>;
   readonly failOnError: Maybe<BooleanQueryOperatorInput>;
-  readonly extensions: Maybe<StringQueryOperatorInput>;
-  readonly exclude: Maybe<StringQueryOperatorInput>;
 };
 
 type SitePluginPluginOptionsPrettierFilterInput = {
@@ -2769,6 +2767,7 @@ type SitePageFieldsEnum =
   | 'context.numberOfPages'
   | 'context.previousPagePath'
   | 'context.nextPagePath'
+  | 'context.pageId'
   | 'context.previousItem.id'
   | 'context.previousItem.tags'
   | 'context.previousItem.title'
@@ -2844,8 +2843,6 @@ type SitePageFieldsEnum =
   | 'pluginCreator.pluginOptions.stages'
   | 'pluginCreator.pluginOptions.options.emitWarning'
   | 'pluginCreator.pluginOptions.options.failOnError'
-  | 'pluginCreator.pluginOptions.options.extensions'
-  | 'pluginCreator.pluginOptions.options.exclude'
   | 'pluginCreator.pluginOptions.trackingId'
   | 'pluginCreator.pluginOptions.head'
   | 'pluginCreator.pluginOptions.anonymize'
@@ -5337,8 +5334,6 @@ type SitePluginFieldsEnum =
   | 'pluginOptions.stages'
   | 'pluginOptions.options.emitWarning'
   | 'pluginOptions.options.failOnError'
-  | 'pluginOptions.options.extensions'
-  | 'pluginOptions.options.exclude'
   | 'pluginOptions.trackingId'
   | 'pluginOptions.head'
   | 'pluginOptions.anonymize'
@@ -5418,6 +5413,19 @@ type usersmasmyBlogsrctemplatesindexTsx3021252718QueryVariables = Exact<{
 
 
 type usersmasmyBlogsrctemplatesindexTsx3021252718Query = { readonly posts: { readonly nodes: ReadonlyArray<(
+      Pick<ContentfulMasaru514Blog, 'id' | 'tags' | 'title' | 'updatedAt' | 'createdAt' | 'slug'>
+      & { readonly body: Maybe<(
+        Pick<contentfulMasaru514BlogBodyTextNode, 'id'>
+        & { readonly childMarkdownRemark: Maybe<Pick<MarkdownRemark, 'html'>> }
+      )> }
+    )> } };
+
+type usersmasmyBlogsrctemplatesarticleTsx3149601194QueryVariables = Exact<{
+  pageId: Scalars['String'];
+}>;
+
+
+type usersmasmyBlogsrctemplatesarticleTsx3149601194Query = { readonly posts: { readonly nodes: ReadonlyArray<(
       Pick<ContentfulMasaru514Blog, 'id' | 'tags' | 'title' | 'updatedAt' | 'createdAt' | 'slug'>
       & { readonly body: Maybe<(
         Pick<contentfulMasaru514BlogBodyTextNode, 'id'>

@@ -64,7 +64,7 @@ const IndexPage = (props: BlogQuery & ChildPagination) => {
       </TheHeader>
       <TheMain>
         <Articles articles={articles} />
-        <Pagination pageContext={pageContext} />
+        <Pagination pageContext={pageContext} isAbsolute={false} />
       </TheMain>
     </Layout>
   )

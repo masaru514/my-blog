@@ -11,14 +11,20 @@ interface PageContext {
     previousPagePath: string,
     skip: number,
   }
+  isAbsolute: boolean
 }
 
-const Pagination = ({ pageContext }: PageContext) => {
+const Pagination = ({ pageContext, isAbsolute }: PageContext) => {
   const { previousPagePath, nextPagePath } = pageContext
+
+  const previousPath = isAbsolute ? `/${previousPagePath}` : previousPagePath
+  const nextPath = isAbsolute ? `/${nextPagePath}` : nextPagePath
+
+  console.warn(nextPath, isAbsolute)
   return (
     <PaginationDiv>
-      {previousPagePath ? <Link to={previousPagePath}> ← 前のページ</Link> : <div></div>}
-      {nextPagePath ? <Link to={nextPagePath}>次のページ →</Link> : <div></div>}
+      {previousPagePath ? <Link to={previousPath}> ← 前のページ</Link> : <div></div>}
+      {nextPagePath ? <Link to={nextPath}>次のページ →</Link > : <div></div>}
     </PaginationDiv>
   )
 }

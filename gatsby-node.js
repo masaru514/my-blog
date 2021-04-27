@@ -49,7 +49,7 @@ exports.createPages = ({ actions, graphql }) => {
           items: array.nodes,
           component: article,
           itemToPath: 'id',
-          itemToId: 'nodes.id',
+          itemToId: 'id',
         })
       }),
     )
