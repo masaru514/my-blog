@@ -307,48 +307,8 @@ type SitePageContext = {
   readonly previousPagePath: Maybe<Scalars['String']>;
   readonly nextPagePath: Maybe<Scalars['String']>;
   readonly pageId: Maybe<Scalars['String']>;
-  readonly previousItem: Maybe<SitePageContextPreviousItem>;
   readonly previousPageId: Maybe<Scalars['String']>;
-  readonly nextItem: Maybe<SitePageContextNextItem>;
   readonly nextPageId: Maybe<Scalars['String']>;
-};
-
-type SitePageContextPreviousItem = {
-  readonly id: Maybe<Scalars['String']>;
-  readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly title: Maybe<Scalars['String']>;
-  readonly updatedAt: Maybe<Scalars['Date']>;
-  readonly createdAt: Maybe<Scalars['Date']>;
-  readonly slug: Maybe<Scalars['String']>;
-  readonly body: Maybe<SitePageContextPreviousItemBody>;
-};
-
-type SitePageContextPreviousItemBody = {
-  readonly id: Maybe<Scalars['String']>;
-  readonly childMarkdownRemark: Maybe<SitePageContextPreviousItemBodyChildMarkdownRemark>;
-};
-
-type SitePageContextPreviousItemBodyChildMarkdownRemark = {
-  readonly html: Maybe<Scalars['String']>;
-};
-
-type SitePageContextNextItem = {
-  readonly id: Maybe<Scalars['String']>;
-  readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly title: Maybe<Scalars['String']>;
-  readonly updatedAt: Maybe<Scalars['Date']>;
-  readonly createdAt: Maybe<Scalars['Date']>;
-  readonly slug: Maybe<Scalars['String']>;
-  readonly body: Maybe<SitePageContextNextItemBody>;
-};
-
-type SitePageContextNextItemBody = {
-  readonly id: Maybe<Scalars['String']>;
-  readonly childMarkdownRemark: Maybe<SitePageContextNextItemBodyChildMarkdownRemark>;
-};
-
-type SitePageContextNextItemBodyChildMarkdownRemark = {
-  readonly html: Maybe<Scalars['String']>;
 };
 
 type ImageFormat =
@@ -671,16 +631,6 @@ type MarkdownRemark_tableOfContentsArgs = {
 
 type MarkdownRemarkFrontmatter = {
   readonly title: Maybe<Scalars['String']>;
-  readonly date: Maybe<Scalars['Date']>;
-  readonly description: Maybe<Scalars['String']>;
-};
-
-
-type MarkdownRemarkFrontmatter_dateArgs = {
-  formatString: Maybe<Scalars['String']>;
-  fromNow: Maybe<Scalars['Boolean']>;
-  difference: Maybe<Scalars['String']>;
-  locale: Maybe<Scalars['String']>;
 };
 
 type ContentfulEntry = {
@@ -890,12 +840,12 @@ type ContentfulMasaru514Blog = ContentfulReference & ContentfulEntry & Node & {
   readonly node_locale: Scalars['String'];
   readonly title: Maybe<Scalars['String']>;
   readonly slug: Maybe<Scalars['String']>;
+  readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly body: Maybe<contentfulMasaru514BlogBodyTextNode>;
   readonly spaceId: Maybe<Scalars['String']>;
   readonly createdAt: Maybe<Scalars['Date']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
   readonly sys: Maybe<ContentfulMasaru514BlogSys>;
-  readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   /** Returns all children nodes filtered by type contentfulMasaru514BlogBodyTextNode */
   readonly childrenContentfulMasaru514BlogBodyTextNode: Maybe<ReadonlyArray<Maybe<contentfulMasaru514BlogBodyTextNode>>>;
   /** Returns the first child node of type contentfulMasaru514BlogBodyTextNode or null if there are no children of given type on this node */
@@ -939,16 +889,6 @@ type ContentfulMasaru514BlogSysContentTypeSys = {
 
 type MdxFrontmatter = {
   readonly title: Scalars['String'];
-  readonly date: Maybe<Scalars['Date']>;
-  readonly description: Maybe<Scalars['String']>;
-};
-
-
-type MdxFrontmatter_dateArgs = {
-  formatString: Maybe<Scalars['String']>;
-  fromNow: Maybe<Scalars['Boolean']>;
-  difference: Maybe<Scalars['String']>;
-  locale: Maybe<Scalars['String']>;
 };
 
 type MdxHeadingMdx = {
@@ -1135,6 +1075,8 @@ type SitePluginPluginOptionsPlugins = {
 type SitePluginPluginOptionsOptions = {
   readonly emitWarning: Maybe<Scalars['Boolean']>;
   readonly failOnError: Maybe<Scalars['Boolean']>;
+  readonly extensions: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly exclude: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
 };
 
 type SitePluginPluginOptionsPrettier = {
@@ -1459,12 +1401,12 @@ type Query_contentfulMasaru514BlogArgs = {
   node_locale: Maybe<StringQueryOperatorInput>;
   title: Maybe<StringQueryOperatorInput>;
   slug: Maybe<StringQueryOperatorInput>;
+  tags: Maybe<StringQueryOperatorInput>;
   body: Maybe<contentfulMasaru514BlogBodyTextNodeFilterInput>;
   spaceId: Maybe<StringQueryOperatorInput>;
   createdAt: Maybe<DateQueryOperatorInput>;
   updatedAt: Maybe<DateQueryOperatorInput>;
   sys: Maybe<ContentfulMasaru514BlogSysFilterInput>;
-  tags: Maybe<StringQueryOperatorInput>;
   childrenContentfulMasaru514BlogBodyTextNode: Maybe<contentfulMasaru514BlogBodyTextNodeFilterListInput>;
   childContentfulMasaru514BlogBodyTextNode: Maybe<contentfulMasaru514BlogBodyTextNodeFilterInput>;
   parent: Maybe<NodeFilterInput>;
@@ -2459,48 +2401,8 @@ type SitePageContextFilterInput = {
   readonly previousPagePath: Maybe<StringQueryOperatorInput>;
   readonly nextPagePath: Maybe<StringQueryOperatorInput>;
   readonly pageId: Maybe<StringQueryOperatorInput>;
-  readonly previousItem: Maybe<SitePageContextPreviousItemFilterInput>;
   readonly previousPageId: Maybe<StringQueryOperatorInput>;
-  readonly nextItem: Maybe<SitePageContextNextItemFilterInput>;
   readonly nextPageId: Maybe<StringQueryOperatorInput>;
-};
-
-type SitePageContextPreviousItemFilterInput = {
-  readonly id: Maybe<StringQueryOperatorInput>;
-  readonly tags: Maybe<StringQueryOperatorInput>;
-  readonly title: Maybe<StringQueryOperatorInput>;
-  readonly updatedAt: Maybe<DateQueryOperatorInput>;
-  readonly createdAt: Maybe<DateQueryOperatorInput>;
-  readonly slug: Maybe<StringQueryOperatorInput>;
-  readonly body: Maybe<SitePageContextPreviousItemBodyFilterInput>;
-};
-
-type SitePageContextPreviousItemBodyFilterInput = {
-  readonly id: Maybe<StringQueryOperatorInput>;
-  readonly childMarkdownRemark: Maybe<SitePageContextPreviousItemBodyChildMarkdownRemarkFilterInput>;
-};
-
-type SitePageContextPreviousItemBodyChildMarkdownRemarkFilterInput = {
-  readonly html: Maybe<StringQueryOperatorInput>;
-};
-
-type SitePageContextNextItemFilterInput = {
-  readonly id: Maybe<StringQueryOperatorInput>;
-  readonly tags: Maybe<StringQueryOperatorInput>;
-  readonly title: Maybe<StringQueryOperatorInput>;
-  readonly updatedAt: Maybe<DateQueryOperatorInput>;
-  readonly createdAt: Maybe<DateQueryOperatorInput>;
-  readonly slug: Maybe<StringQueryOperatorInput>;
-  readonly body: Maybe<SitePageContextNextItemBodyFilterInput>;
-};
-
-type SitePageContextNextItemBodyFilterInput = {
-  readonly id: Maybe<StringQueryOperatorInput>;
-  readonly childMarkdownRemark: Maybe<SitePageContextNextItemBodyChildMarkdownRemarkFilterInput>;
-};
-
-type SitePageContextNextItemBodyChildMarkdownRemarkFilterInput = {
-  readonly html: Maybe<StringQueryOperatorInput>;
 };
 
 type SitePluginFilterInput = {
@@ -2585,6 +2487,8 @@ type SitePluginPluginOptionsPluginsFilterInput = {
 type SitePluginPluginOptionsOptionsFilterInput = {
   readonly emitWarning: Maybe<BooleanQueryOperatorInput>;
   readonly failOnError: Maybe<BooleanQueryOperatorInput>;
+  readonly extensions: Maybe<StringQueryOperatorInput>;
+  readonly exclude: Maybe<StringQueryOperatorInput>;
 };
 
 type SitePluginPluginOptionsPrettierFilterInput = {
@@ -2768,21 +2672,7 @@ type SitePageFieldsEnum =
   | 'context.previousPagePath'
   | 'context.nextPagePath'
   | 'context.pageId'
-  | 'context.previousItem.id'
-  | 'context.previousItem.tags'
-  | 'context.previousItem.title'
-  | 'context.previousItem.updatedAt'
-  | 'context.previousItem.createdAt'
-  | 'context.previousItem.slug'
-  | 'context.previousItem.body.id'
   | 'context.previousPageId'
-  | 'context.nextItem.id'
-  | 'context.nextItem.tags'
-  | 'context.nextItem.title'
-  | 'context.nextItem.updatedAt'
-  | 'context.nextItem.createdAt'
-  | 'context.nextItem.slug'
-  | 'context.nextItem.body.id'
   | 'context.nextPageId'
   | 'pluginCreator.id'
   | 'pluginCreator.parent.id'
@@ -2843,6 +2733,8 @@ type SitePageFieldsEnum =
   | 'pluginCreator.pluginOptions.stages'
   | 'pluginCreator.pluginOptions.options.emitWarning'
   | 'pluginCreator.pluginOptions.options.failOnError'
+  | 'pluginCreator.pluginOptions.options.extensions'
+  | 'pluginCreator.pluginOptions.options.exclude'
   | 'pluginCreator.pluginOptions.trackingId'
   | 'pluginCreator.pluginOptions.head'
   | 'pluginCreator.pluginOptions.anonymize'
@@ -3095,8 +2987,6 @@ type ImageSharpSortInput = {
 
 type MarkdownRemarkFrontmatterFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
-  readonly date: Maybe<DateQueryOperatorInput>;
-  readonly description: Maybe<StringQueryOperatorInput>;
 };
 
 type MarkdownHeadingFilterListInput = {
@@ -3145,8 +3035,6 @@ type MarkdownRemarkEdge = {
 type MarkdownRemarkFieldsEnum =
   | 'id'
   | 'frontmatter.title'
-  | 'frontmatter.date'
-  | 'frontmatter.description'
   | 'excerpt'
   | 'rawMarkdownBody'
   | 'html'
@@ -3706,8 +3594,6 @@ type MdxFilterInput = {
 
 type MdxFrontmatterFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
-  readonly date: Maybe<DateQueryOperatorInput>;
-  readonly description: Maybe<StringQueryOperatorInput>;
 };
 
 type MdxHeadingMdxFilterListInput = {
@@ -3778,6 +3664,7 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'node_locale'
   | 'title'
   | 'slug'
+  | 'tags'
   | 'body.id'
   | 'body.parent.id'
   | 'body.parent.parent.id'
@@ -3821,8 +3708,6 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'body.childrenMarkdownRemark'
   | 'body.childrenMarkdownRemark.id'
   | 'body.childrenMarkdownRemark.frontmatter.title'
-  | 'body.childrenMarkdownRemark.frontmatter.date'
-  | 'body.childrenMarkdownRemark.frontmatter.description'
   | 'body.childrenMarkdownRemark.excerpt'
   | 'body.childrenMarkdownRemark.rawMarkdownBody'
   | 'body.childrenMarkdownRemark.html'
@@ -3852,8 +3737,6 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'body.childrenMarkdownRemark.internal.type'
   | 'body.childMarkdownRemark.id'
   | 'body.childMarkdownRemark.frontmatter.title'
-  | 'body.childMarkdownRemark.frontmatter.date'
-  | 'body.childMarkdownRemark.frontmatter.description'
   | 'body.childMarkdownRemark.excerpt'
   | 'body.childMarkdownRemark.rawMarkdownBody'
   | 'body.childMarkdownRemark.html'
@@ -3885,8 +3768,6 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'body.childrenMdx.rawBody'
   | 'body.childrenMdx.fileAbsolutePath'
   | 'body.childrenMdx.frontmatter.title'
-  | 'body.childrenMdx.frontmatter.date'
-  | 'body.childrenMdx.frontmatter.description'
   | 'body.childrenMdx.slug'
   | 'body.childrenMdx.body'
   | 'body.childrenMdx.excerpt'
@@ -3917,8 +3798,6 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'body.childMdx.rawBody'
   | 'body.childMdx.fileAbsolutePath'
   | 'body.childMdx.frontmatter.title'
-  | 'body.childMdx.frontmatter.date'
-  | 'body.childMdx.frontmatter.description'
   | 'body.childMdx.slug'
   | 'body.childMdx.body'
   | 'body.childMdx.excerpt'
@@ -3954,7 +3833,6 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'sys.contentType.sys.type'
   | 'sys.contentType.sys.linkType'
   | 'sys.contentType.sys.id'
-  | 'tags'
   | 'childrenContentfulMasaru514BlogBodyTextNode'
   | 'childrenContentfulMasaru514BlogBodyTextNode.id'
   | 'childrenContentfulMasaru514BlogBodyTextNode.parent.id'
@@ -3999,8 +3877,6 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'childrenContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark.id'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark.frontmatter.title'
-  | 'childrenContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark.frontmatter.date'
-  | 'childrenContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark.frontmatter.description'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark.excerpt'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark.rawMarkdownBody'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark.html'
@@ -4030,8 +3906,6 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'childrenContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark.internal.type'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childMarkdownRemark.id'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childMarkdownRemark.frontmatter.title'
-  | 'childrenContentfulMasaru514BlogBodyTextNode.childMarkdownRemark.frontmatter.date'
-  | 'childrenContentfulMasaru514BlogBodyTextNode.childMarkdownRemark.frontmatter.description'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childMarkdownRemark.excerpt'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childMarkdownRemark.rawMarkdownBody'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childMarkdownRemark.html'
@@ -4063,8 +3937,6 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'childrenContentfulMasaru514BlogBodyTextNode.childrenMdx.rawBody'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childrenMdx.fileAbsolutePath'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childrenMdx.frontmatter.title'
-  | 'childrenContentfulMasaru514BlogBodyTextNode.childrenMdx.frontmatter.date'
-  | 'childrenContentfulMasaru514BlogBodyTextNode.childrenMdx.frontmatter.description'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childrenMdx.slug'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childrenMdx.body'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childrenMdx.excerpt'
@@ -4095,8 +3967,6 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'childrenContentfulMasaru514BlogBodyTextNode.childMdx.rawBody'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childMdx.fileAbsolutePath'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childMdx.frontmatter.title'
-  | 'childrenContentfulMasaru514BlogBodyTextNode.childMdx.frontmatter.date'
-  | 'childrenContentfulMasaru514BlogBodyTextNode.childMdx.frontmatter.description'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childMdx.slug'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childMdx.body'
   | 'childrenContentfulMasaru514BlogBodyTextNode.childMdx.excerpt'
@@ -4167,8 +4037,6 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'childContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark'
   | 'childContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark.id'
   | 'childContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark.frontmatter.title'
-  | 'childContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark.frontmatter.date'
-  | 'childContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark.frontmatter.description'
   | 'childContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark.excerpt'
   | 'childContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark.rawMarkdownBody'
   | 'childContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark.html'
@@ -4198,8 +4066,6 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'childContentfulMasaru514BlogBodyTextNode.childrenMarkdownRemark.internal.type'
   | 'childContentfulMasaru514BlogBodyTextNode.childMarkdownRemark.id'
   | 'childContentfulMasaru514BlogBodyTextNode.childMarkdownRemark.frontmatter.title'
-  | 'childContentfulMasaru514BlogBodyTextNode.childMarkdownRemark.frontmatter.date'
-  | 'childContentfulMasaru514BlogBodyTextNode.childMarkdownRemark.frontmatter.description'
   | 'childContentfulMasaru514BlogBodyTextNode.childMarkdownRemark.excerpt'
   | 'childContentfulMasaru514BlogBodyTextNode.childMarkdownRemark.rawMarkdownBody'
   | 'childContentfulMasaru514BlogBodyTextNode.childMarkdownRemark.html'
@@ -4231,8 +4097,6 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'childContentfulMasaru514BlogBodyTextNode.childrenMdx.rawBody'
   | 'childContentfulMasaru514BlogBodyTextNode.childrenMdx.fileAbsolutePath'
   | 'childContentfulMasaru514BlogBodyTextNode.childrenMdx.frontmatter.title'
-  | 'childContentfulMasaru514BlogBodyTextNode.childrenMdx.frontmatter.date'
-  | 'childContentfulMasaru514BlogBodyTextNode.childrenMdx.frontmatter.description'
   | 'childContentfulMasaru514BlogBodyTextNode.childrenMdx.slug'
   | 'childContentfulMasaru514BlogBodyTextNode.childrenMdx.body'
   | 'childContentfulMasaru514BlogBodyTextNode.childrenMdx.excerpt'
@@ -4263,8 +4127,6 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'childContentfulMasaru514BlogBodyTextNode.childMdx.rawBody'
   | 'childContentfulMasaru514BlogBodyTextNode.childMdx.fileAbsolutePath'
   | 'childContentfulMasaru514BlogBodyTextNode.childMdx.frontmatter.title'
-  | 'childContentfulMasaru514BlogBodyTextNode.childMdx.frontmatter.date'
-  | 'childContentfulMasaru514BlogBodyTextNode.childMdx.frontmatter.description'
   | 'childContentfulMasaru514BlogBodyTextNode.childMdx.slug'
   | 'childContentfulMasaru514BlogBodyTextNode.childMdx.body'
   | 'childContentfulMasaru514BlogBodyTextNode.childMdx.excerpt'
@@ -4393,12 +4255,12 @@ type ContentfulMasaru514BlogFilterInput = {
   readonly node_locale: Maybe<StringQueryOperatorInput>;
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly slug: Maybe<StringQueryOperatorInput>;
+  readonly tags: Maybe<StringQueryOperatorInput>;
   readonly body: Maybe<contentfulMasaru514BlogBodyTextNodeFilterInput>;
   readonly spaceId: Maybe<StringQueryOperatorInput>;
   readonly createdAt: Maybe<DateQueryOperatorInput>;
   readonly updatedAt: Maybe<DateQueryOperatorInput>;
   readonly sys: Maybe<ContentfulMasaru514BlogSysFilterInput>;
-  readonly tags: Maybe<StringQueryOperatorInput>;
   readonly childrenContentfulMasaru514BlogBodyTextNode: Maybe<contentfulMasaru514BlogBodyTextNodeFilterListInput>;
   readonly childContentfulMasaru514BlogBodyTextNode: Maybe<contentfulMasaru514BlogBodyTextNodeFilterInput>;
   readonly parent: Maybe<NodeFilterInput>;
@@ -4442,8 +4304,6 @@ type MdxFieldsEnum =
   | 'rawBody'
   | 'fileAbsolutePath'
   | 'frontmatter.title'
-  | 'frontmatter.date'
-  | 'frontmatter.description'
   | 'slug'
   | 'body'
   | 'excerpt'
@@ -4677,8 +4537,6 @@ type contentfulMasaru514BlogBodyTextNodeFieldsEnum =
   | 'childrenMarkdownRemark'
   | 'childrenMarkdownRemark.id'
   | 'childrenMarkdownRemark.frontmatter.title'
-  | 'childrenMarkdownRemark.frontmatter.date'
-  | 'childrenMarkdownRemark.frontmatter.description'
   | 'childrenMarkdownRemark.excerpt'
   | 'childrenMarkdownRemark.rawMarkdownBody'
   | 'childrenMarkdownRemark.html'
@@ -4732,8 +4590,6 @@ type contentfulMasaru514BlogBodyTextNodeFieldsEnum =
   | 'childrenMarkdownRemark.internal.type'
   | 'childMarkdownRemark.id'
   | 'childMarkdownRemark.frontmatter.title'
-  | 'childMarkdownRemark.frontmatter.date'
-  | 'childMarkdownRemark.frontmatter.description'
   | 'childMarkdownRemark.excerpt'
   | 'childMarkdownRemark.rawMarkdownBody'
   | 'childMarkdownRemark.html'
@@ -4789,8 +4645,6 @@ type contentfulMasaru514BlogBodyTextNodeFieldsEnum =
   | 'childrenMdx.rawBody'
   | 'childrenMdx.fileAbsolutePath'
   | 'childrenMdx.frontmatter.title'
-  | 'childrenMdx.frontmatter.date'
-  | 'childrenMdx.frontmatter.description'
   | 'childrenMdx.slug'
   | 'childrenMdx.body'
   | 'childrenMdx.excerpt'
@@ -4845,8 +4699,6 @@ type contentfulMasaru514BlogBodyTextNodeFieldsEnum =
   | 'childMdx.rawBody'
   | 'childMdx.fileAbsolutePath'
   | 'childMdx.frontmatter.title'
-  | 'childMdx.frontmatter.date'
-  | 'childMdx.frontmatter.description'
   | 'childMdx.slug'
   | 'childMdx.body'
   | 'childMdx.excerpt'
@@ -5334,6 +5186,8 @@ type SitePluginFieldsEnum =
   | 'pluginOptions.stages'
   | 'pluginOptions.options.emitWarning'
   | 'pluginOptions.options.failOnError'
+  | 'pluginOptions.options.extensions'
+  | 'pluginOptions.options.exclude'
   | 'pluginOptions.trackingId'
   | 'pluginOptions.head'
   | 'pluginOptions.anonymize'

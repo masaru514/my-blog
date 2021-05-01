@@ -19,11 +19,12 @@ const Pagination = ({ pageContext, isAbsolute }: PageContext) => {
 
   const previousPath = isAbsolute ? `/${previousPagePath}` : previousPagePath
   const nextPath = isAbsolute ? `/${nextPagePath}` : nextPagePath
+  const home = isAbsolute ? `/blog` : ''
 
-  console.warn(nextPath, isAbsolute)
   return (
     <PaginationDiv>
       {previousPagePath ? <Link to={previousPath}> ← 前のページ</Link> : <div></div>}
+      {home ? <Link to={home}>HOME</Link> : <div></div>}
       {nextPagePath ? <Link to={nextPath}>次のページ →</Link > : <div></div>}
     </PaginationDiv>
   )

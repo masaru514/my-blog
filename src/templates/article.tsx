@@ -119,7 +119,6 @@ const TheMain = styled.main`
 const Article = props => {
   const article = props.data.posts.nodes[0]
   const { pageContext } = props
-  console.warn(pageContext)
 
   const jstCreatedAt = utcToZonedTime(article.createdAt, 'Asia/Tokyo')
   const createdAt = format(jstCreatedAt, 'yyyy/MM/dd HH:mm')
