@@ -117,5 +117,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-typegen',
+    'gatsby-plugin-styled-components',
   ],
 }
