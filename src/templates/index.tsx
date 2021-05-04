@@ -93,7 +93,7 @@ const TheMain = styled.main`
     margin: 2rem auto 0;
     padding: 3rem;
 
-    @media ${device.mobile} {
+    @media ${device.mobileL} {
       margin: 10px auto 0;
       padding: 10px;
     }

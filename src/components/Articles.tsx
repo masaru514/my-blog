@@ -57,7 +57,7 @@ const Section = styled.section`
     max-width: 800px;
     color: #333;
     background: #fff;
-  @media screen and ${device.mobile} {
+  @media screen and ${device.mobileL} {
     padding: 1rem;
     &:last-child {
       margin-bottom: 2.5rem;
@@ -80,7 +80,7 @@ const SectionTitle = styled.h2`
     font-size: 2rem;
     font-weight: bold;
     margin-top: 1.5rem;
-    @media ${device.mobile} {
+    @media ${device.mobileL} {
       font-size: 1.5rem;
     }
   `
@@ -96,7 +96,7 @@ const Body = styled.div`
       word-break: break-word;
     }
     
-    @media ${device.mobile} {
+    @media ${device.mobileL} {
       > p {
           font-size: 0.9rem;
           line-height: 1.9;
