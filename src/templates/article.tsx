@@ -76,12 +76,12 @@ const Section = styled.section`
     max-width: 800px;
     color: #333;
     background: #fff;
-  @media screen and ${device.mobile} {
-    padding: 1rem;
-    &:last-child {
-      margin-bottom: 2.5rem;
+    @media screen and ${device.mobile} {
+      padding: 20px;
+      &:last-child {
+        margin-bottom: 2.5rem;
+      }
     }
-  }
   `
 
 const Flex = styled.div`
@@ -110,8 +110,8 @@ const TheMain = styled.main`
     padding: 3rem;
 
     @media ${device.mobile} {
-      margin: 1rem auto 0;
-      padding: 1rem;
+      margin: 10px auto 0;
+      padding: 10px;
     }
   `
 

@@ -94,8 +94,8 @@ const TheMain = styled.main`
     padding: 3rem;
 
     @media ${device.mobile} {
-      margin: 1rem auto 0;
-      padding: 1rem;
+      margin: 10px auto 0;
+      padding: 10px;
     }
   `
 
