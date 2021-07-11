@@ -3,6 +3,7 @@ import { format } from 'date-fns'
 import { utcToZonedTime } from 'date-fns-tz'
 import styled from 'styled-components'
 import { device } from '../assets/styles.js'
+import { Box, makeStyles, Typography } from '@material-ui/core'
 
 interface ContentfulQuery {
   articles: [
@@ -22,9 +23,19 @@ interface ContentfulQuery {
   ]
 }
 
+const useStyles = makeStyles({
+  title: {
+    fontSize: 24,
+    paddingTop: 16,
+    textAlign: 'justify',
+    fontWeight: 'bold',
+    fontFamily: 'Noto Sans JP'
+  }
+})
 
 
 const Articles = ({ articles }: ContentfulQuery) => {
+  const classes = useStyles()
   return (
     <div>
       {articles.map((article) => {
@@ -39,7 +50,11 @@ const Articles = ({ articles }: ContentfulQuery) => {
               <p className="text-center">作成日 {createdAt}</p>
               {createdAt !== updatedAt ? <p>更新日 {updatedAt}</p> : ''}
             </Flex>
-            <SectionTitle>{article.title}</SectionTitle>
+            <Box>
+              <Typography variant="h2" className={classes.title}>
+                {article.title}
+              </Typography>
+            </Box>
             <Body dangerouslySetInnerHTML={{ __html: article.body.childMarkdownRemark.html }} />
           </Section>
         )
@@ -76,15 +91,6 @@ const Flex = styled.div`
     }
   `
 
-const SectionTitle = styled.h2`
-    font-size: 2rem;
-    font-weight: bold;
-    margin-top: 1.5rem;
-    @media ${device.mobileL} {
-      font-size: 1.5rem;
-    }
-  `
-
 const Body = styled.div`
     margin-top: 2rem;
     line-height: 2;
@@ -95,7 +101,7 @@ const Body = styled.div`
     code {
       word-break: break-word;
     }
-    
+
     @media ${device.mobileL} {
       > p {
           font-size: 0.9rem;

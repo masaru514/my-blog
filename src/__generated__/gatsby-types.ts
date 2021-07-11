@@ -307,8 +307,48 @@ type SitePageContext = {
   readonly previousPagePath: Maybe<Scalars['String']>;
   readonly nextPagePath: Maybe<Scalars['String']>;
   readonly pageId: Maybe<Scalars['String']>;
+  readonly previousItem: Maybe<SitePageContextPreviousItem>;
   readonly previousPageId: Maybe<Scalars['String']>;
+  readonly nextItem: Maybe<SitePageContextNextItem>;
   readonly nextPageId: Maybe<Scalars['String']>;
+};
+
+type SitePageContextPreviousItem = {
+  readonly id: Maybe<Scalars['String']>;
+  readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly title: Maybe<Scalars['String']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly slug: Maybe<Scalars['String']>;
+  readonly body: Maybe<SitePageContextPreviousItemBody>;
+};
+
+type SitePageContextPreviousItemBody = {
+  readonly id: Maybe<Scalars['String']>;
+  readonly childMarkdownRemark: Maybe<SitePageContextPreviousItemBodyChildMarkdownRemark>;
+};
+
+type SitePageContextPreviousItemBodyChildMarkdownRemark = {
+  readonly html: Maybe<Scalars['String']>;
+};
+
+type SitePageContextNextItem = {
+  readonly id: Maybe<Scalars['String']>;
+  readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly title: Maybe<Scalars['String']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly slug: Maybe<Scalars['String']>;
+  readonly body: Maybe<SitePageContextNextItemBody>;
+};
+
+type SitePageContextNextItemBody = {
+  readonly id: Maybe<Scalars['String']>;
+  readonly childMarkdownRemark: Maybe<SitePageContextNextItemBodyChildMarkdownRemark>;
+};
+
+type SitePageContextNextItemBodyChildMarkdownRemark = {
+  readonly html: Maybe<Scalars['String']>;
 };
 
 type ImageFormat =
@@ -840,12 +880,12 @@ type ContentfulMasaru514Blog = ContentfulReference & ContentfulEntry & Node & {
   readonly node_locale: Scalars['String'];
   readonly title: Maybe<Scalars['String']>;
   readonly slug: Maybe<Scalars['String']>;
-  readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly body: Maybe<contentfulMasaru514BlogBodyTextNode>;
   readonly spaceId: Maybe<Scalars['String']>;
   readonly createdAt: Maybe<Scalars['Date']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
   readonly sys: Maybe<ContentfulMasaru514BlogSys>;
+  readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   /** Returns all children nodes filtered by type contentfulMasaru514BlogBodyTextNode */
   readonly childrenContentfulMasaru514BlogBodyTextNode: Maybe<ReadonlyArray<Maybe<contentfulMasaru514BlogBodyTextNode>>>;
   /** Returns the first child node of type contentfulMasaru514BlogBodyTextNode or null if there are no children of given type on this node */
@@ -1407,12 +1447,12 @@ type Query_contentfulMasaru514BlogArgs = {
   node_locale: Maybe<StringQueryOperatorInput>;
   title: Maybe<StringQueryOperatorInput>;
   slug: Maybe<StringQueryOperatorInput>;
-  tags: Maybe<StringQueryOperatorInput>;
   body: Maybe<contentfulMasaru514BlogBodyTextNodeFilterInput>;
   spaceId: Maybe<StringQueryOperatorInput>;
   createdAt: Maybe<DateQueryOperatorInput>;
   updatedAt: Maybe<DateQueryOperatorInput>;
   sys: Maybe<ContentfulMasaru514BlogSysFilterInput>;
+  tags: Maybe<StringQueryOperatorInput>;
   childrenContentfulMasaru514BlogBodyTextNode: Maybe<contentfulMasaru514BlogBodyTextNodeFilterListInput>;
   childContentfulMasaru514BlogBodyTextNode: Maybe<contentfulMasaru514BlogBodyTextNodeFilterInput>;
   parent: Maybe<NodeFilterInput>;
@@ -2407,8 +2447,48 @@ type SitePageContextFilterInput = {
   readonly previousPagePath: Maybe<StringQueryOperatorInput>;
   readonly nextPagePath: Maybe<StringQueryOperatorInput>;
   readonly pageId: Maybe<StringQueryOperatorInput>;
+  readonly previousItem: Maybe<SitePageContextPreviousItemFilterInput>;
   readonly previousPageId: Maybe<StringQueryOperatorInput>;
+  readonly nextItem: Maybe<SitePageContextNextItemFilterInput>;
   readonly nextPageId: Maybe<StringQueryOperatorInput>;
+};
+
+type SitePageContextPreviousItemFilterInput = {
+  readonly id: Maybe<StringQueryOperatorInput>;
+  readonly tags: Maybe<StringQueryOperatorInput>;
+  readonly title: Maybe<StringQueryOperatorInput>;
+  readonly updatedAt: Maybe<DateQueryOperatorInput>;
+  readonly createdAt: Maybe<DateQueryOperatorInput>;
+  readonly slug: Maybe<StringQueryOperatorInput>;
+  readonly body: Maybe<SitePageContextPreviousItemBodyFilterInput>;
+};
+
+type SitePageContextPreviousItemBodyFilterInput = {
+  readonly id: Maybe<StringQueryOperatorInput>;
+  readonly childMarkdownRemark: Maybe<SitePageContextPreviousItemBodyChildMarkdownRemarkFilterInput>;
+};
+
+type SitePageContextPreviousItemBodyChildMarkdownRemarkFilterInput = {
+  readonly html: Maybe<StringQueryOperatorInput>;
+};
+
+type SitePageContextNextItemFilterInput = {
+  readonly id: Maybe<StringQueryOperatorInput>;
+  readonly tags: Maybe<StringQueryOperatorInput>;
+  readonly title: Maybe<StringQueryOperatorInput>;
+  readonly updatedAt: Maybe<DateQueryOperatorInput>;
+  readonly createdAt: Maybe<DateQueryOperatorInput>;
+  readonly slug: Maybe<StringQueryOperatorInput>;
+  readonly body: Maybe<SitePageContextNextItemBodyFilterInput>;
+};
+
+type SitePageContextNextItemBodyFilterInput = {
+  readonly id: Maybe<StringQueryOperatorInput>;
+  readonly childMarkdownRemark: Maybe<SitePageContextNextItemBodyChildMarkdownRemarkFilterInput>;
+};
+
+type SitePageContextNextItemBodyChildMarkdownRemarkFilterInput = {
+  readonly html: Maybe<StringQueryOperatorInput>;
 };
 
 type SitePluginFilterInput = {
@@ -2684,7 +2764,21 @@ type SitePageFieldsEnum =
   | 'context.previousPagePath'
   | 'context.nextPagePath'
   | 'context.pageId'
+  | 'context.previousItem.id'
+  | 'context.previousItem.tags'
+  | 'context.previousItem.title'
+  | 'context.previousItem.updatedAt'
+  | 'context.previousItem.createdAt'
+  | 'context.previousItem.slug'
+  | 'context.previousItem.body.id'
   | 'context.previousPageId'
+  | 'context.nextItem.id'
+  | 'context.nextItem.tags'
+  | 'context.nextItem.title'
+  | 'context.nextItem.updatedAt'
+  | 'context.nextItem.createdAt'
+  | 'context.nextItem.slug'
+  | 'context.nextItem.body.id'
   | 'context.nextPageId'
   | 'pluginCreator.id'
   | 'pluginCreator.parent.id'
@@ -3682,7 +3776,6 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'node_locale'
   | 'title'
   | 'slug'
-  | 'tags'
   | 'body.id'
   | 'body.parent.id'
   | 'body.parent.parent.id'
@@ -3851,6 +3944,7 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'sys.contentType.sys.type'
   | 'sys.contentType.sys.linkType'
   | 'sys.contentType.sys.id'
+  | 'tags'
   | 'childrenContentfulMasaru514BlogBodyTextNode'
   | 'childrenContentfulMasaru514BlogBodyTextNode.id'
   | 'childrenContentfulMasaru514BlogBodyTextNode.parent.id'
@@ -4273,12 +4367,12 @@ type ContentfulMasaru514BlogFilterInput = {
   readonly node_locale: Maybe<StringQueryOperatorInput>;
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly slug: Maybe<StringQueryOperatorInput>;
-  readonly tags: Maybe<StringQueryOperatorInput>;
   readonly body: Maybe<contentfulMasaru514BlogBodyTextNodeFilterInput>;
   readonly spaceId: Maybe<StringQueryOperatorInput>;
   readonly createdAt: Maybe<DateQueryOperatorInput>;
   readonly updatedAt: Maybe<DateQueryOperatorInput>;
   readonly sys: Maybe<ContentfulMasaru514BlogSysFilterInput>;
+  readonly tags: Maybe<StringQueryOperatorInput>;
   readonly childrenContentfulMasaru514BlogBodyTextNode: Maybe<contentfulMasaru514BlogBodyTextNodeFilterListInput>;
   readonly childContentfulMasaru514BlogBodyTextNode: Maybe<contentfulMasaru514BlogBodyTextNodeFilterInput>;
   readonly parent: Maybe<NodeFilterInput>;
@@ -5284,19 +5378,21 @@ type SitePluginSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
-type usersmasmyBlogsrctemplatesindexTsx3021252718QueryVariables = Exact<{
+type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
+
+type usersmasmyBlogsrctemplatesindexTsx2429738617QueryVariables = Exact<{
   skip: Scalars['Int'];
   limit: Scalars['Int'];
 }>;
 
 
-type usersmasmyBlogsrctemplatesindexTsx3021252718Query = { readonly posts: { readonly nodes: ReadonlyArray<(
+type usersmasmyBlogsrctemplatesindexTsx2429738617Query = { readonly posts: { readonly nodes: ReadonlyArray<(
       Pick<ContentfulMasaru514Blog, 'id' | 'tags' | 'title' | 'updatedAt' | 'createdAt' | 'slug'>
       & { readonly body: Maybe<(
         Pick<contentfulMasaru514BlogBodyTextNode, 'id'>
         & { readonly childMarkdownRemark: Maybe<Pick<MarkdownRemark, 'html'>> }
       )> }
-    )> } };
+    )> }, readonly file: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }> };
 
 type usersmasmyBlogsrctemplatesarticleTsx3149601194QueryVariables = Exact<{
   pageId: Scalars['String'];
@@ -5321,6 +5417,11 @@ type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 type Unnamed_1_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ defaultTitle: SiteSiteMetadata['title'], defaultDescription: SiteSiteMetadata['description'] }> }> };
 
+type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type Unnamed_2_Query = { readonly images: { readonly edges: ReadonlyArray<{ readonly node: Pick<File, 'relativePath' | 'name'> }> } };
+
 type GatsbyContentfulFixedFragment = Pick<ContentfulFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
 type GatsbyContentfulFixed_tracedSVGFragment = Pick<ContentfulFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
@@ -5340,8 +5441,6 @@ type GatsbyContentfulFluid_noBase64Fragment = Pick<ContentfulFluid, 'aspectRatio
 type GatsbyContentfulFluid_withWebpFragment = Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
 type GatsbyContentfulFluid_withWebp_noBase64Fragment = Pick<ContentfulFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
 type GatsbyImageSharpFixed_tracedSVGFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
 

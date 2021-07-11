@@ -118,5 +118,6 @@ module.exports = {
     },
     'gatsby-plugin-typegen',
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-material-ui',
   ],
 }

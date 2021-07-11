@@ -3,8 +3,10 @@ import Layout from '../layout/default'
 import styled from 'styled-components'
 import Articles from '../components/Articles'
 import Pagination from '../components/Pagination'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import { device } from '../assets/styles.js'
+import { Box, makeStyles, Typography } from '@material-ui/core'
+import h1Image from '../images/icons/091-time.svg'
 
 export const pageQuery = graphql`
   query($skip: Int!, $limit: Int!) {
@@ -28,8 +30,24 @@ export const pageQuery = graphql`
         }
       }
     }
+    file(relativePath: {eq: "logo.jpg"}) {
+      childImageSharp{
+        fixed(width: 200) {
+            ...GatsbyImageSharpFixed
+        }
+      }
+    }
   }
 `
+
+const useStyles = makeStyles({
+  h1: {
+    margin: '0 auto',
+    textAlign: 'center',
+    padding: 20,
+    fontSize: 24
+  }
+})
 
 interface BlogQuery {
   data: {
@@ -57,11 +75,15 @@ type ChildPagination = React.ComponentProps<typeof Pagination>
 const IndexPage = (props: BlogQuery & ChildPagination) => {
   const { pageContext } = props
   const articles = props.data.posts.nodes
+  const classes = useStyles()
   return (
     <Layout>
-      <TheHeader>
-        <H1Title className="text-center"><Link to="/blog">技術書 by masaru514</Link></H1Title>
-      </TheHeader>
+      <Box>
+        <Typography variant="h1" className={classes.h1}>
+          <img src={h1Image} width="100" height="100" />
+          masaru514 blog
+        </Typography>
+      </Box>
       <TheMain>
         <Articles articles={articles} />
         <Pagination pageContext={pageContext} isAbsolute={false} />
@@ -70,27 +92,10 @@ const IndexPage = (props: BlogQuery & ChildPagination) => {
   )
 }
 
-const H1Title = styled.h1`
-    font-family: 'Inter, Noto sans JP';
-    font-size: 24px;
-    color: #333;
-    margin: 0 auto;
-    padding-left: 1rem;
-    max-width: 800px; 
-    > a {
-      color: #333;
-      text-decoration: none;
-    }
-  `
-
-const TheHeader = styled.header`
-    background: #fff;
-    padding: 1rem 0;
-  `
 
 const TheMain = styled.main`
     max-width: 800px;
-    margin: 2rem auto 0;
+    margin: 0 auto 0;
     padding: 3rem;
 
     @media ${device.mobileL} {

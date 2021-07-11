@@ -10,6 +10,7 @@ const Layout: React.FC = ({ children }) => {
       <GlobalStyle />
       <Head title="HOME" />
       {children}
+      <div>Icons made by <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     </Body>
   )
 }
@@ -25,7 +26,6 @@ const GlobalStyle = createGlobalStyle`
       font-size: 1.4rem;
     }
     img {
-      max-width: 600px;
       width: 100%;
     }
   `

@@ -34,7 +34,7 @@ exports.createPages = ({ actions, graphql }) => {
         const article = path.resolve('./src/templates/article.tsx')
         const { data } = result
         const array = data.allContentfulMasaru514Blog
-        const pathPrefix = ({ pageNumber }) => (pageNumber === 0 ? '/blog' : '/blog/page')
+        const pathPrefix = ({ pageNumber }) => (pageNumber === 0 ? '/' : '/page')
         paginate({
           createPage,
           items: array.nodes,

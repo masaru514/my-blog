@@ -41,7 +41,7 @@ const H1Title = styled.h1`
     color: #333;
     margin: 0 auto;
     padding-left: 1rem;
-    max-width: 800px; 
+    max-width: 800px;
     > a {
       color: #333;
       text-decoration: none;
@@ -58,7 +58,7 @@ const Body = styled.div`
     code {
       word-break: break-word;
     }
-    
+
     @media ${device.mobileL} {
       > p {
           font-size: 0.9rem;
@@ -129,7 +129,7 @@ const Article = props => {
   return (
     <Layout>
       <TheHeader>
-        <H1Title className="text-center"><Link to="/blog">技術書 by masaru514</Link></H1Title>
+        <H1Title><Link to="/blog">技術書 by masaru514</Link></H1Title>
       </TheHeader>
       <TheMain>
         <Section>
