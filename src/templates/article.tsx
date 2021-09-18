@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import { format } from 'date-fns'
 import { utcToZonedTime } from 'date-fns-tz'
-import styled from 'styled-components'
-import { device } from '../assets/styles.js'
 import Layout from '../layout/default'
 import Pagination from '../components/Pagination'
+import { Box, makeStyles, Typography } from '@material-ui/core'
+import { Link } from 'gatsby'
 
 
 export const pageQuery = graphql`
@@ -29,95 +29,66 @@ export const pageQuery = graphql`
   }
 `
 
-
-const TheHeader = styled.header`
-    background: #fff;
-    padding: 1rem 0;
-  `
-
-const H1Title = styled.h1`
-    font-family: 'Inter, Noto sans JP';
-    font-size: 24px;
-    color: #333;
-    margin: 0 auto;
-    padding-left: 1rem;
-    max-width: 800px;
-    > a {
-      color: #333;
-      text-decoration: none;
+const useStyles = makeStyles({
+  article: {
+    maxWidth: '800px',
+    padding: '4rem 3rem 1.5rem 3rem',
+    margin: '0 auto',
+    boxSizing: 'border-box'
+  },
+  title: {
+    margin: '0 auto',
+    textAlign: 'center',
+    padding: 24,
+    fontSize: 18,
+    letterSpacing: '0.5rem',
+    fontWeight: 200,
+    fontFamily: 'Inter'
+  },
+  articleTitle: {
+    fontSize: 24,
+    color: '#666',
+    marginTop: 24
+  },
+  link: {
+    textDecoration: 'none',
+    color: '#333',
+  },
+  markdownStyles: {
+    '&> h2': {
+      margin: '4rem 0 2rem',
+      color: '#666',
+      fontWeight: 'normal',
+      padding: '8px 0 8px 16px',
+      borderLeft: '4px solid #127380'
+    },
+    '&> p': {
+      margin: '1.6rem 0 1rem',
+      letterSpacing: '1px',
+      lineHeight: '1.6rem',
+      color: '#666',
+      fontSize: 15,
+    },
+    '&> ul': {
+      margin: '2rem 0 1rem',
+      color: '#666',
+      lineHeight: '1.6rem',
+    },
+  },
+  date: {
+    color: '#aaa',
+    fontSize: '0.8rem',
+    fontWeight: 100,
+    '&:first-child': {
+      marginRight: '1rem'
     }
-  `
-
-const Body = styled.div`
-    margin-top: 2rem;
-    line-height: 2;
-    > p {
-      padding: 0.5rem 0;
-    }
-
-    code {
-      word-break: break-word;
-    }
-
-    @media ${device.mobileL} {
-      > p {
-          font-size: 0.9rem;
-          line-height: 1.9;
-        }
-    }
-  `
-
-const Section = styled.section`
-    border: 1px solid #f0f0f0;
-    margin-bottom: 5rem;
-    border-radius: 5px;
-    padding: 2rem 3rem 3rem 3rem;
-    font-family: 'Noto Sans JP';
-    max-width: 800px;
-    color: #333;
-    background: #fff;
-    @media screen and ${device.mobileL} {
-      padding: 20px;
-      &:last-child {
-        margin-bottom: 2.5rem;
-      }
-    }
-  `
-
-const Flex = styled.div`
-    display: flex;
-    > p {
-      color: #aaa;
-      font-size: 0.8rem;
-    }
-    > p:first-child {
-      margin-right: 1rem;
-    }
-  `
-
-const SectionTitle = styled.h2`
-    font-size: 2rem;
-    font-weight: bold;
-    margin-top: 1.5rem;
-    @media ${device.mobileL} {
-      font-size: 1.5rem;
-    }
-  `
-
-const TheMain = styled.main`
-    max-width: 800px;
-    margin: 2rem auto 0;
-    padding: 3rem;
-
-    @media ${device.mobileL} {
-      margin: 10px auto 0;
-      padding: 10px;
-    }
-  `
+  }
+})
 
 
 const Article = props => {
   const article = props.data.posts.nodes[0]
+  const classes = useStyles()
   const { pageContext } = props
 
   const jstCreatedAt = utcToZonedTime(article.createdAt, 'Asia/Tokyo')
@@ -128,20 +99,24 @@ const Article = props => {
 
   return (
     <Layout>
-      <TheHeader>
-        <H1Title><Link to="/blog">技術書 by masaru514</Link></H1Title>
-      </TheHeader>
-      <TheMain>
-        <Section>
-          <Flex>
-            <p className="text-center">作成日 {createdAt}</p>
-            {createdAt !== updatedAt ? <p>更新日 {updatedAt}</p> : ''}
-          </Flex>
-          <SectionTitle>{article.title}</SectionTitle>
-          <Body dangerouslySetInnerHTML={{ __html: article.body.childMarkdownRemark.html }} />
-        </Section>
+      <Box>
+        <Box>
+          <Link className={classes.link} to="/">
+            <Typography variant="h2" className={classes.title}>
+              MASARU514
+            </Typography>
+          </Link>
+        </Box>
+        <Box className={classes.article}>
+          <Box display="flex">
+            <Typography variant="body2" className={classes.date}>作成日 {createdAt}</Typography>
+              {createdAt !== updatedAt && <Typography className={classes.date}>更新日 {updatedAt}</Typography>}
+          </Box>
+          <Box component="p" className={classes.articleTitle}>{article.title}</Box>
+          <Box className={classes.markdownStyles} dangerouslySetInnerHTML={{ __html: article.body.childMarkdownRemark.html }} />
+        </Box>
         <Pagination pageContext={pageContext} isAbsolute={true} />
-      </TheMain>
+      </Box>
     </Layout>
   )
 }

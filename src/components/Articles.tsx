@@ -1,9 +1,8 @@
 import * as React from 'react'
 import { format } from 'date-fns'
 import { utcToZonedTime } from 'date-fns-tz'
-import styled from 'styled-components'
-import { device } from '../assets/styles.js'
 import { Box, makeStyles, Typography } from '@material-ui/core'
+import { Link } from 'gatsby'
 
 interface ContentfulQuery {
   articles: [
@@ -23,15 +22,44 @@ interface ContentfulQuery {
   ]
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   title: {
-    fontSize: 24,
-    paddingTop: 16,
+    display: 'inline-block',
+    color: '#666',
+    fontSize: 18,
+    letterSpacing: '1px',
     textAlign: 'justify',
-    fontWeight: 'bold',
-    fontFamily: 'Noto Sans JP'
-  }
-})
+    fontWeight: 100,
+    transition: 'all 0.3s',
+    '&:hover': {
+      color: '#7adbde'
+    },
+  },
+  createdAt: {
+    color: '#aaa',
+    fontSize: '0.8rem',
+    fontWeight: 100,
+    '&:first-child': {
+      marginRight: '1rem'
+    }
+  },
+  section: {
+    borderBottom: '1px solid #f0f0f0',
+    marginBottom: '1rem',
+    padding: '1rem 3rem 1.5rem 3rem',
+    maxWidth: '800px',
+    [theme.breakpoints.down('md')]: {
+      lineHeight: '1.5rem',
+      fontSize: 18,
+      paddingTop: 4
+    },
+  },
+  link: {
+    textDecoration: 'none',
+    display: 'block',
+    color: '#333',
+  },
+}))
 
 
 const Articles = ({ articles }: ContentfulQuery) => {
@@ -40,74 +68,24 @@ const Articles = ({ articles }: ContentfulQuery) => {
     <div>
       {articles.map((article) => {
         const jstCreatedAt = utcToZonedTime(article.createdAt, 'Asia/Tokyo')
-        const createdAt = format(jstCreatedAt, 'yyyy/MM/dd HH:mm')
-
-        const jstUpdatedAt = utcToZonedTime(article.updatedAt, 'Asia/Tokyo')
-        const updatedAt = format(jstUpdatedAt, 'yyyy/MM/dd HH:mm')
+        const createdAt = format(jstCreatedAt, 'yyyy.MM.dd')
         return (
-          <Section key={article.title}>
-            <Flex>
-              <p className="text-center">作成日 {createdAt}</p>
-              {createdAt !== updatedAt ? <p>更新日 {updatedAt}</p> : ''}
-            </Flex>
+          <Box className={classes.section}  key={article.id}>
             <Box>
+                <Typography variant="body2" className={classes.createdAt}>{createdAt}</Typography>
+            </Box>
+            <Box>
+              <Link className={classes.link} to={article.id}>
               <Typography variant="h2" className={classes.title}>
                 {article.title}
               </Typography>
+            </Link>
             </Box>
-            <Body dangerouslySetInnerHTML={{ __html: article.body.childMarkdownRemark.html }} />
-          </Section>
+          </Box>
         )
       })}
     </div>
   )
 }
-
-const Section = styled.section`
-    border: 1px solid #f0f0f0;
-    margin-bottom: 5rem;
-    border-radius: 5px;
-    padding: 2rem 3rem 3rem 3rem;
-    font-family: 'Noto Sans JP';
-    max-width: 800px;
-    color: #333;
-    background: #fff;
-  @media screen and ${device.mobileL} {
-    padding: 1rem;
-    &:last-child {
-      margin-bottom: 2.5rem;
-    }
-  }
-  `
-
-const Flex = styled.div`
-    display: flex;
-    > p {
-      color: #aaa;
-      font-size: 0.8rem;
-    }
-    > p:first-child {
-      margin-right: 1rem;
-    }
-  `
-
-const Body = styled.div`
-    margin-top: 2rem;
-    line-height: 2;
-    > p {
-      padding: 0.5rem 0;
-    }
-
-    code {
-      word-break: break-word;
-    }
-
-    @media ${device.mobileL} {
-      > p {
-          font-size: 0.9rem;
-          line-height: 1.9;
-        }
-    }
-  `
 
 export default Articles

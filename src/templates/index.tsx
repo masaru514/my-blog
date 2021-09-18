@@ -6,7 +6,6 @@ import Pagination from '../components/Pagination'
 import { graphql } from 'gatsby'
 import { device } from '../assets/styles.js'
 import { Box, makeStyles, Typography } from '@material-ui/core'
-import h1Image from '../images/icons/091-time.svg'
 
 export const pageQuery = graphql`
   query($skip: Int!, $limit: Int!) {
@@ -41,12 +40,25 @@ export const pageQuery = graphql`
 `
 
 const useStyles = makeStyles({
-  h1: {
+  title: {
     margin: '0 auto',
     textAlign: 'center',
-    padding: 20,
-    fontSize: 24
-  }
+    padding: 24,
+    fontSize: 18,
+    letterSpacing: '0.5rem',
+    fontWeight: 200,
+    fontFamily: 'Inter'
+  },
+  footer: {
+    textAlign: 'center',
+    fontFamily: 'Inter',
+    fontWeight: 100,
+    color: '#666',
+    '&> a': {
+      color: '#333',
+      textDecoration: 'none'
+    }
+  },
 })
 
 interface BlogQuery {
@@ -79,15 +91,18 @@ const IndexPage = (props: BlogQuery & ChildPagination) => {
   return (
     <Layout>
       <Box>
-        <Typography variant="h1" className={classes.h1}>
-          <img src={h1Image} width="100" height="100" />
-          masaru514 blog
+        <Typography variant="h2" className={classes.title}>
+          MASARU514
         </Typography>
       </Box>
       <TheMain>
         <Articles articles={articles} />
         <Pagination pageContext={pageContext} isAbsolute={false} />
       </TheMain>
+      <Box component="footer" py={8}>
+        <Box className={classes.footer} textAlign="center">Icons made by <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></Box>
+        <Box className={classes.footer} textAlign="center" pt={1}>copyright masaru514</Box>
+      </Box>
     </Layout>
   )
 }

@@ -879,12 +879,12 @@ type ContentfulMasaru514Blog = ContentfulReference & ContentfulEntry & Node & {
   readonly id: Scalars['ID'];
   readonly node_locale: Scalars['String'];
   readonly title: Maybe<Scalars['String']>;
-  readonly slug: Maybe<Scalars['String']>;
   readonly body: Maybe<contentfulMasaru514BlogBodyTextNode>;
   readonly spaceId: Maybe<Scalars['String']>;
   readonly createdAt: Maybe<Scalars['Date']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
   readonly sys: Maybe<ContentfulMasaru514BlogSys>;
+  readonly slug: Maybe<Scalars['String']>;
   readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   /** Returns all children nodes filtered by type contentfulMasaru514BlogBodyTextNode */
   readonly childrenContentfulMasaru514BlogBodyTextNode: Maybe<ReadonlyArray<Maybe<contentfulMasaru514BlogBodyTextNode>>>;
@@ -1446,12 +1446,12 @@ type Query_contentfulMasaru514BlogArgs = {
   id: Maybe<StringQueryOperatorInput>;
   node_locale: Maybe<StringQueryOperatorInput>;
   title: Maybe<StringQueryOperatorInput>;
-  slug: Maybe<StringQueryOperatorInput>;
   body: Maybe<contentfulMasaru514BlogBodyTextNodeFilterInput>;
   spaceId: Maybe<StringQueryOperatorInput>;
   createdAt: Maybe<DateQueryOperatorInput>;
   updatedAt: Maybe<DateQueryOperatorInput>;
   sys: Maybe<ContentfulMasaru514BlogSysFilterInput>;
+  slug: Maybe<StringQueryOperatorInput>;
   tags: Maybe<StringQueryOperatorInput>;
   childrenContentfulMasaru514BlogBodyTextNode: Maybe<contentfulMasaru514BlogBodyTextNodeFilterListInput>;
   childContentfulMasaru514BlogBodyTextNode: Maybe<contentfulMasaru514BlogBodyTextNodeFilterInput>;
@@ -3775,7 +3775,6 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'id'
   | 'node_locale'
   | 'title'
-  | 'slug'
   | 'body.id'
   | 'body.parent.id'
   | 'body.parent.parent.id'
@@ -3944,6 +3943,7 @@ type ContentfulMasaru514BlogFieldsEnum =
   | 'sys.contentType.sys.type'
   | 'sys.contentType.sys.linkType'
   | 'sys.contentType.sys.id'
+  | 'slug'
   | 'tags'
   | 'childrenContentfulMasaru514BlogBodyTextNode'
   | 'childrenContentfulMasaru514BlogBodyTextNode.id'
@@ -4366,12 +4366,12 @@ type ContentfulMasaru514BlogFilterInput = {
   readonly id: Maybe<StringQueryOperatorInput>;
   readonly node_locale: Maybe<StringQueryOperatorInput>;
   readonly title: Maybe<StringQueryOperatorInput>;
-  readonly slug: Maybe<StringQueryOperatorInput>;
   readonly body: Maybe<contentfulMasaru514BlogBodyTextNodeFilterInput>;
   readonly spaceId: Maybe<StringQueryOperatorInput>;
   readonly createdAt: Maybe<DateQueryOperatorInput>;
   readonly updatedAt: Maybe<DateQueryOperatorInput>;
   readonly sys: Maybe<ContentfulMasaru514BlogSysFilterInput>;
+  readonly slug: Maybe<StringQueryOperatorInput>;
   readonly tags: Maybe<StringQueryOperatorInput>;
   readonly childrenContentfulMasaru514BlogBodyTextNode: Maybe<contentfulMasaru514BlogBodyTextNodeFilterListInput>;
   readonly childContentfulMasaru514BlogBodyTextNode: Maybe<contentfulMasaru514BlogBodyTextNodeFilterInput>;
@@ -5412,16 +5412,6 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
-type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type Unnamed_1_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ defaultTitle: SiteSiteMetadata['title'], defaultDescription: SiteSiteMetadata['description'] }> }> };
-
-type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type Unnamed_2_Query = { readonly images: { readonly edges: ReadonlyArray<{ readonly node: Pick<File, 'relativePath' | 'name'> }> } };
-
 type GatsbyContentfulFixedFragment = Pick<ContentfulFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
 type GatsbyContentfulFixed_tracedSVGFragment = Pick<ContentfulFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
@@ -5465,5 +5455,15 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = Pick<ImageSharpFluid, 't
 type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+
+type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type Unnamed_1_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ defaultTitle: SiteSiteMetadata['title'], defaultDescription: SiteSiteMetadata['description'] }> }> };
+
+type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type Unnamed_2_Query = { readonly images: { readonly edges: ReadonlyArray<{ readonly node: Pick<File, 'relativePath' | 'name'> }> } };
 
 }

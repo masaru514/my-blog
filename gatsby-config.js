@@ -104,7 +104,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: ['Noto Sans JP', 'Inter', 'JetBrains Mono'],
+        fonts: ['Noto Sans JP', `Inter100,200,300,500,800`, 'JetBrains Mono'],
         display: 'swap',
       },
     },
