@@ -52,6 +52,8 @@ const useStyles = makeStyles(theme => ({
     fontSize: 24,
     color: '#666',
     marginTop: 8,
+    letterSpacing: '1px',
+    lineHeight: '2rem',
     fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo'
   },
   link: {
@@ -63,6 +65,8 @@ const useStyles = makeStyles(theme => ({
       margin: '4rem 0 2rem',
       color: '#666',
       padding: '8px 0 8px 0',
+      lineHeight: '2rem',
+      letterSpacing: '1px',
       fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo',
       fontSize: 24,
     },
@@ -72,7 +76,7 @@ const useStyles = makeStyles(theme => ({
       fontWeight: 'normal',
       padding: '8px 0 8px 16px',
       borderLeft: '4px solid #127380',
-      fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo'
+      fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo',
     },
     '&> p': {
       margin: '1.6rem 0 1rem',
@@ -80,12 +84,13 @@ const useStyles = makeStyles(theme => ({
       lineHeight: '1.6rem',
       color: '#666',
       fontSize: 15,
-      fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo'
+      fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo',
     },
     '&> ul': {
       margin: '2rem 0 1rem',
       color: '#666',
       lineHeight: '1.6rem',
+      fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo',
     },
   },
   date: {
