@@ -74,6 +74,8 @@ const useStyles = makeStyles(theme => ({
       margin: '4rem 0 2rem',
       color: '#666',
       fontWeight: 'normal',
+      lineHeight: '2rem',
+      letterSpacing: '1px',
       padding: '8px 0 8px 16px',
       borderLeft: '4px solid #127380',
       fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo',
