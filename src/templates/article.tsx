@@ -62,8 +62,9 @@ const useStyles = makeStyles(theme => ({
     '&> h1': {
       margin: '4rem 0 2rem',
       color: '#666',
-      padding: '8px 0 8px 16px',
-      fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo'
+      padding: '8px 0 8px 0',
+      fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo',
+      fontSize: 24,
     },
     '&> h2': {
       margin: '4rem 0 2rem',
