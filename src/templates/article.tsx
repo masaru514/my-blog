@@ -59,6 +59,12 @@ const useStyles = makeStyles(theme => ({
     color: '#333',
   },
   markdownStyles: {
+    '&> h1': {
+      margin: '4rem 0 2rem',
+      color: '#666',
+      padding: '8px 0 8px 16px',
+      fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo'
+    },
     '&> h2': {
       margin: '4rem 0 2rem',
       color: '#666',
