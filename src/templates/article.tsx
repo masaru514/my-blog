@@ -29,12 +29,15 @@ export const pageQuery = graphql`
   }
 `
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   article: {
     maxWidth: '800px',
     padding: '4rem 3rem 1.5rem 3rem',
     margin: '0 auto',
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+    [theme.breakpoints.down('md')]: {
+      padding: '1rem 2rem'
+    }
   },
   title: {
     margin: '0 auto',
@@ -42,13 +45,14 @@ const useStyles = makeStyles({
     padding: 24,
     fontSize: 18,
     letterSpacing: '0.5rem',
-    fontWeight: 200,
-    fontFamily: 'Inter'
+    fontWeight: 100,
+    fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo'
   },
   articleTitle: {
     fontSize: 24,
     color: '#666',
-    marginTop: 24
+    marginTop: 8,
+    fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo'
   },
   link: {
     textDecoration: 'none',
@@ -60,7 +64,8 @@ const useStyles = makeStyles({
       color: '#666',
       fontWeight: 'normal',
       padding: '8px 0 8px 16px',
-      borderLeft: '4px solid #127380'
+      borderLeft: '4px solid #127380',
+      fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo'
     },
     '&> p': {
       margin: '1.6rem 0 1rem',
@@ -68,6 +73,7 @@ const useStyles = makeStyles({
       lineHeight: '1.6rem',
       color: '#666',
       fontSize: 15,
+      fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo'
     },
     '&> ul': {
       margin: '2rem 0 1rem',
@@ -83,10 +89,10 @@ const useStyles = makeStyles({
       marginRight: '1rem'
     }
   }
-})
+}))
 
 
-const Article = props => {
+const Article = (props: any) => {
   const article = props.data.posts.nodes[0]
   const classes = useStyles()
   const { pageContext } = props

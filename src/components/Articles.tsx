@@ -39,9 +39,7 @@ const useStyles = makeStyles(theme => ({
     color: '#aaa',
     fontSize: '0.8rem',
     fontWeight: 100,
-    '&:first-child': {
-      marginRight: '1rem'
-    }
+    marginBottom: '8px'
   },
   section: {
     borderBottom: '1px solid #f0f0f0',
@@ -51,7 +49,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('md')]: {
       lineHeight: '1.5rem',
       fontSize: 18,
-      paddingTop: 4
+      padding: '4px 2rem 1.5rem'
     },
   },
   link: {

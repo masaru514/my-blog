@@ -1,10 +1,8 @@
 import * as React from 'react'
 import Layout from '../layout/default'
-import styled from 'styled-components'
 import Articles from '../components/Articles'
 import Pagination from '../components/Pagination'
 import { graphql } from 'gatsby'
-import { device } from '../assets/styles.js'
 import { Box, makeStyles, Typography } from '@material-ui/core'
 
 export const pageQuery = graphql`
@@ -39,7 +37,7 @@ export const pageQuery = graphql`
   }
 `
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   title: {
     margin: '0 auto',
     textAlign: 'center',
@@ -47,19 +45,27 @@ const useStyles = makeStyles({
     fontSize: 18,
     letterSpacing: '0.5rem',
     fontWeight: 200,
-    fontFamily: 'Inter'
+    fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo'
+  },
+  content: {
+    maxWidth: '800px',
+    margin: '1rem auto 0',
+    [theme.breakpoints.down('md')]: {
+      margin: '0 auto 0',
+      padding: '10px'
+    }
   },
   footer: {
     textAlign: 'center',
-    fontFamily: 'Inter',
+    fontFamily: 'Inter,  Hiragino Kaku Gothic ProN',
     fontWeight: 100,
     color: '#666',
     '&> a': {
-      color: '#333',
+      color: '#666',
       textDecoration: 'none'
     }
   },
-})
+}))
 
 interface BlogQuery {
   data: {
@@ -95,29 +101,16 @@ const IndexPage = (props: BlogQuery & ChildPagination) => {
           MASARU514
         </Typography>
       </Box>
-      <TheMain>
+      <Box component="main" className={classes.content}>
         <Articles articles={articles} />
         <Pagination pageContext={pageContext} isAbsolute={false} />
-      </TheMain>
+      </Box>
       <Box component="footer" py={8}>
-        <Box className={classes.footer} textAlign="center">Icons made by <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></Box>
-        <Box className={classes.footer} textAlign="center" pt={1}>copyright masaru514</Box>
+        <Box className={classes.footer} textAlign="center">Icons made by <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a></Box>
+        <Box className={classes.footer} textAlign="center" pt={2}>copyright masaru514</Box>
       </Box>
     </Layout>
   )
 }
-
-
-const TheMain = styled.main`
-    max-width: 800px;
-    margin: 0 auto 0;
-    padding: 3rem;
-
-    @media ${device.mobileL} {
-      margin: 10px auto 0;
-      padding: 10px;
-    }
-  `
-
 
 export default IndexPage

@@ -16,6 +16,9 @@ const Layout: React.FC = ({ children }) => {
 
 const GlobalStyle = createGlobalStyle`
     ${reset}
+    body {
+      font-family: 'Inter, Hiragino Kaku Gothic ProN, Meiryo';
+    }
     h2 {
       font-weight: 800;
       font-size: 1.4rem;

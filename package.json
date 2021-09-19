@@ -8,10 +8,10 @@
     "gatsby"
   ],
   "scripts": {
-    "dev": "gatsby develop",
-    "start": "gatsby develop",
+    "dev": "gatsby develop -H 0.0.0.0",
+    "start": "gatsby start",
     "build": "gatsby build",
-    "serve": "gatsby serve",
+    "serve": "gatsby serve -H 0.0.0.0",
     "clean": "gatsby clean",
     "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
     "lintfix": "eslint --fix --ext .ts,.js,.vue --ignore-path .gitignore ."
@@ -28,8 +28,8 @@
     "gatsby-awesome-pagination": "^0.3.8",
     "gatsby-image": "^3.9.0",
     "gatsby-plugin-gatsby-cloud": "^2.1.0",
-    "gatsby-plugin-google-analytics": "^3.1.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-google-gtag": "^3.14.0",
     "gatsby-plugin-image": "^1.1.2",
     "gatsby-plugin-manifest": "^3.1.0",
     "gatsby-plugin-material-ui": "^3.0.1",

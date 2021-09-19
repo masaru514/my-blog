@@ -1,13 +1,22 @@
-require('dotenv').config() // eslint-disable-line @typescript-eslint/no-var-requires
-
+require('dotenv').config()
+ // eslint-disable-line @typescript-eslint/no-var-requires
 module.exports = {
   siteMetadata: {
     title: 'masaru514 Blog',
-    siteUrl: 'https://masaru514.gatsbyjs.io',
+    siteUrl: 'https://masaru514.com',
     description:
       'masaru514のブログです。主にフロントエンドを中心に情報を載せています。利用する技術：JavaScript, Nuxt, Next, Gatsby, Node, Firebaseなどなど。',
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-google-gtag',
+      options: {
+        trackingIds: ['G-6BGSJS2EBS'],
+        pluginConfig: {
+          head: true,
+        },
+      },
+    },
     {
       resolve: 'gatsby-source-contentful',
       options: {
@@ -30,12 +39,6 @@ module.exports = {
     'gatsby-plugin-sass',
     'gatsby-plugin-gatsby-cloud',
     'gatsby-plugin-image',
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: process.env.ANALITICS,
-      },
-    },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     {
