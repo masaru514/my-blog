@@ -103,8 +103,10 @@ const Article = (props: any) => {
   const jstUpdatedAt = utcToZonedTime(article.updatedAt, 'Asia/Tokyo')
   const updatedAt = format(jstUpdatedAt, 'yyyy/MM/dd HH:mm')
 
+  const title = article.title
+  const description = article.title
   return (
-    <Layout>
+    <Layout title={title} description={description}>
       <Box>
         <Box>
           <Link className={classes.link} to="/">

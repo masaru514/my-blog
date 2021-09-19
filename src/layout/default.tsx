@@ -4,11 +4,17 @@ import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
 import 'prismjs/themes/prism-tomorrow.css'
 
-const Layout: React.FC = ({ children }) => {
+type Props = {
+  children?: React.ReactNode
+  title?: string
+  description?: string
+}
+
+const Layout = ({ children, title, description }: Props) => {
   return (
     <div>
       <GlobalStyle />
-      <Head title="HOME" />
+      <Head title={ title || "HOME"} description={description || 'masaru514のブログです。'} />
       {children}
     </div>
   )

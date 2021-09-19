@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     maxWidth: '800px',
-    margin: '1rem auto 0',
+    margin: '4rem auto 0',
     [theme.breakpoints.down('md')]: {
       margin: '0 auto 0',
       padding: '10px'
@@ -89,7 +89,6 @@ interface BlogQuery {
 
 type ChildPagination = React.ComponentProps<typeof Pagination>
 
-// markup
 const IndexPage = (props: BlogQuery & ChildPagination) => {
   const { pageContext } = props
   const articles = props.data.posts.nodes

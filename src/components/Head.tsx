@@ -26,7 +26,7 @@ const Head = ({ title, description }: MetaTagGroup): JSX.Element => {
   }
   return (
     <Helmet>
-      <title>{metaData.title}</title>
+      <title>{metaData.title}  |  masaru514</title>
       <meta name="description" content={metaData.description} />
     </Helmet>
   )
