@@ -19,21 +19,41 @@ const useStyles = makeStyles({
   pagination: {
     display: 'flex',
     justifyContent: 'space-between',
-    marginTop: '5rem',
-    marginBottom: '2.5rem',
     maxWidth: '800px',
-    margin: '0 auto',
+    margin: '5rem auto 5rem',
     padding: '0 3rem',
     boxSizing: 'border-box'
   },
-  link: {
-    color: '#333',
+  linkLeft: {
+    textAlign: 'left',
+    color: '#666',
     transition: 'all 0.2s',
     textDecoration: 'none',
+    width: '200px',
     '&:hover': {
       color: '#7adbde'
     }
-  }
+  },
+  linkHome: {
+    textAlign: 'center',
+    color: '#666',
+    transition: 'all 0.2s',
+    textDecoration: 'none',
+    width: '200px',
+    '&:hover': {
+      color: '#7adbde'
+    }
+  },
+  linkRight: {
+    textAlign: 'right',
+    color: '#666',
+    transition: 'all 0.2s',
+    textDecoration: 'none',
+    width: '200px',
+    '&:hover': {
+      color: '#7adbde'
+    }
+  },
 })
 
 const Pagination = ({ pageContext, isAbsolute }: PageContext) => {
@@ -46,9 +66,9 @@ const Pagination = ({ pageContext, isAbsolute }: PageContext) => {
 
   return (
     <Box className={classes.pagination}>
-      {previousPagePath ? <Link className={classes.link} to={previousPath}> ← 前のページ</Link> : <div />}
-      {home ? <Link className={classes.link} to={home}>HOME</Link> : <div />}
-      {nextPagePath ? <Link className={classes.link} to={nextPath}>次のページ →</Link> : <div />}
+      {previousPagePath ? <Link className={classes.linkLeft} to={previousPath}> ← 前のページ</Link> : <Box width={200} />}
+      {home ? <Link className={classes.linkHome} to={home}>HOME</Link> : <Box width={200} />}
+      {nextPagePath ? <Link className={classes.linkRight} to={nextPath}>次のページ →</Link> : <Box width={200} />}
     </Box>
   )
 }
