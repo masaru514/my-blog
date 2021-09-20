@@ -45,7 +45,8 @@ const useStyles = makeStyles(theme => ({
     fontSize: 18,
     letterSpacing: '0.5rem',
     fontWeight: 200,
-    fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo'
+    fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo',
+    color: '#666'
   },
   content: {
     maxWidth: '800px',

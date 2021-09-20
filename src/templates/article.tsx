@@ -46,7 +46,8 @@ const useStyles = makeStyles(theme => ({
     fontSize: 18,
     letterSpacing: '0.5rem',
     fontWeight: 100,
-    fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo'
+    fontFamily: 'Inter, Hiragino Kaku Gothic ProN, Meiryo',
+    color: '#666'
   },
   articleTitle: {
     fontSize: 24,
@@ -58,7 +59,7 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     textDecoration: 'none',
-    color: '#333',
+    color: '#666',
   },
   markdownStyles: {
     '&> h1': {
