@@ -97,7 +97,7 @@ const IndexPage = (props: BlogQuery & ChildPagination) => {
   return (
     <Layout>
       <Box>
-        <Typography variant="h2" className={classes.title}>
+        <Typography variant="h1" className={classes.title}>
           MASARU514
         </Typography>
       </Box>

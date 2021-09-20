@@ -6336,12 +6336,12 @@ type Unnamed_1_Query = { readonly posts: { readonly nodes: ReadonlyArray<(
       )> }
     )> }, readonly file: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }> };
 
-type Unnamed_2_QueryVariables = Exact<{
+type usersmasmyBlogsrctemplatesArticleTsx3149601194QueryVariables = Exact<{
   pageId: Scalars['String'];
 }>;
 
 
-type Unnamed_2_Query = { readonly posts: { readonly nodes: ReadonlyArray<(
+type usersmasmyBlogsrctemplatesArticleTsx3149601194Query = { readonly posts: { readonly nodes: ReadonlyArray<(
       Pick<ContentfulMasaru514Blog, 'id' | 'tags' | 'title' | 'updatedAt' | 'createdAt' | 'slug'>
       & { readonly body: Maybe<(
         Pick<contentfulMasaru514BlogBodyTextNode, 'id'>
@@ -6354,15 +6354,15 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
+type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type Unnamed_2_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ defaultTitle: SiteSiteMetadata['title'], defaultDescription: SiteSiteMetadata['description'] }> }> };
+
 type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_3_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ defaultTitle: SiteSiteMetadata['title'], defaultDescription: SiteSiteMetadata['description'] }> }> };
-
-type Unnamed_4_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type Unnamed_4_Query = { readonly images: { readonly edges: ReadonlyArray<{ readonly node: Pick<File, 'relativePath' | 'name'> }> } };
+type Unnamed_3_Query = { readonly images: { readonly edges: ReadonlyArray<{ readonly node: Pick<File, 'relativePath' | 'name'> }> } };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
